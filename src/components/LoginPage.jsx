@@ -12,8 +12,18 @@ const LoginPage = () => {
         const credentials = {credential: userToken}
         axios.post('http://127.0.0.1:5000/api/login', credentials).then(response => {
             saveTokens(response);
-            nav('/home');
+            nav('/');
         })
+    }
+
+    const fakeLogin = () => {
+        const fakeToken = 'oadaodaiofbofbasijbfioasuhdoaisdhaosdjoihouh';
+        const credentials = {credential: fakeToken};
+        axios.post('http://127.0.0.1:5000/api/login', credentials).then(response => {
+            saveTokens(response);
+            nav('/');
+        })
+        nav('/');
     }
 
     const checkTokens = () => {
@@ -26,7 +36,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (localStorage.getItem('StarlightRefreshToken') !== null) {
-            nav("/home");
+            nav("/");
         }
     });
 
@@ -40,9 +50,14 @@ const LoginPage = () => {
                 }}
                 auto_select={true}
             />
-            <button onClick={checkTokens}>
-                Nervous About Tokens?
-            </button>
+            <div>
+                <button onClick={checkTokens}>
+                    Nervous About Tokens?
+                </button>
+                <button onClick={fakeLogin}>
+                    Fake Login
+                </button>
+            </div>
         </div>
     )
 };
