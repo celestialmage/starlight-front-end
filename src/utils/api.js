@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosHeaders } from 'axios';
 import { saveTokens } from './utility';
 import { jwtDecode } from 'jwt-decode';
 
@@ -24,19 +24,17 @@ export const createPost = () => {
         text: `hey guys it's ${timestamp}`
     };
 
-    return axios.post(`${backendUrl}/posts`, post, headers).then(response => response['data']['post'])
+    return axios.post(`${backendUrl}/posts`, post, headers).then(response => response['data']['post']).catch(error => error)
 }
 
 export const fetchTimeline = async () => {
-    return axios.get(`${backendUrl}/posts/timeline`, getAuthHeaders()).then(response => response.data.posts);
+    return axios.get(`${backendUrl}/posts/timeline`, getAuthHeaders()).then(response => response.data.posts).catch(error => error);
 
 }
 
 const createNewUser = (googleToken) => {
     const user = jwtDecode(googleToken);
     const headers = getAuthHeaders()
-
-    console.log(user)
 
     const userData = {
         email: user.email,
@@ -46,10 +44,9 @@ const createNewUser = (googleToken) => {
         bio: `I'm ${user.name}`
     }
 
-    console.log(userData);
-
     axios.post(`${backendUrl}/users`, userData, headers).then(response => {
-        console.log(response.data);
+        // console.log(response.data);
+        "meow" + response;
     })
 }
 
@@ -61,10 +58,6 @@ export const loginUser = async ({ credential }) => {
     const response = await axios.post(`${backendUrl}/api/login`, credentials);
     saveTokens(response);
 
-    console.log(response)
-    console.log(jwtDecode(localStorage.getItem('StarlightAccessToken')));
-
-
     if (response.data.user_found === false) {
         createNewUser(userToken);
     }
@@ -72,36 +65,37 @@ export const loginUser = async ({ credential }) => {
 
 // this function will be used when calling ANY api function that retrieves or posts data
 // api_function is a callback function.
-export async function fetchWithAuth (url, api_function, options = {}) {
-    const refreshUrl = `${backendUrl}/api/refresh`;
-    const accessToken = localStorage.getItem('StarlightAccessToken');
-    const headers = getAuthHeaders();
- 
-    let response = await api_function(refreshUrl, {
-        ...options,
-        headers: headers
-    })
+export async function fetchWithAuth (api_function, options = {}) { 
+    let response = await api_function()
 
-    if (response.status === 401 && accessToken) {
-        const refreshResponse = await fetch('/api/refresh', {
-            method: 'POST',
-            headers: headers
-        });
+    console.log(response);
 
-        if (refreshResponse.ok) {
-            const data = await refreshResponse.json();
-            const newAccessToken = data.access_token;
+    if (response.status === 401 && localStorage.getItem('StarlightRefreshToken')) {
+        const refreshUrl = `${backendUrl}/api/refresh`;
+        const headers = {
+            "headers": {
+                Authorization: `Bearer ${localStorage.getItem('StarlightRefreshToken')}`,
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const refreshResponse = await axios.post(refreshUrl, {"message": "hey guys"}, headers)
+            // .catch(error => error);
+
+        let meow = "meow";
+
+        if (refreshResponse.statusText === "OK") {
+            const newAccessToken = refreshResponse.data.access_token;
             localStorage.setItem('StarlightAccessToken', newAccessToken);
 
-            response = await api_function(url, {
-                ...options,
-                headers: headers
-            })
+            response = await api_function()
         } else {
             localStorage.removeItem('StarlightAccessToken');
             localStorage.removeItem('StarlightRefreshToken');
             window.location.href = '/login';
         }
     }
+
+    return response
 };
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchTimeline } from "../utils/api"
+import { fetchWithAuth, fetchTimeline } from "../utils/api"
 
 const PostList = ({rerender}) => {
 
@@ -24,9 +24,8 @@ const PostList = ({rerender}) => {
 
     useEffect(() => {
         const getTimeline = async () => {
-            let timeline = await fetchTimeline();
-            console.log(timeline);
-
+            let timeline = await fetchWithAuth(fetchTimeline);
+            
             timeline = timeline.reverse().map((post,index) => (
                 <div key={index} id={index}>
                     <h2>{post.user.display_name}</h2>
@@ -39,7 +38,7 @@ const PostList = ({rerender}) => {
             setPosts(timeline);
         }
 
-        getTimeline();
+       getTimeline();
     }, [rerender]) 
 
     return (

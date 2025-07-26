@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router";
 import { jwtDecode } from "jwt-decode";
 import LogoutButton from "./LogoutButton";
-import { createPost } from '../utils/api'
+import { fetchWithAuth, createPost } from '../utils/api'
 import PostList from "./PostList";
 
 const Landing = () => {
@@ -40,7 +40,7 @@ const Landing = () => {
                 Get Your Data!
             </button>
             <button onClick={() => {
-                createPost()
+                fetchWithAuth(createPost)
                 setRerender(!rerender)
             }}>
                 Make a silly post!
