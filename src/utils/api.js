@@ -24,7 +24,7 @@ export const createPost = () => {
         text: `hey guys it's ${timestamp}`
     };
 
-    axios.post(`${backendUrl}/posts`, post, headers).then(console.log)
+    return axios.post(`${backendUrl}/posts`, post, headers).then(response => response['data']['post'])
 }
 
 export const fetchTimeline = async () => {
@@ -76,7 +76,7 @@ export async function fetchWithAuth (url, api_function, options = {}) {
     const refreshUrl = `${backendUrl}/api/refresh`;
     const accessToken = localStorage.getItem('StarlightAccessToken');
     const headers = getAuthHeaders();
-
+ 
     let response = await api_function(refreshUrl, {
         ...options,
         headers: headers

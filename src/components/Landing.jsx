@@ -9,6 +9,9 @@ import PostList from "./PostList";
 const Landing = () => {
     const nav = useNavigate();
 
+    const [rerender, setRerender] = useState(true);
+
+
     const handleLogout = () => {
         localStorage.removeItem('StarlightAccessToken');
         localStorage.removeItem('StarlightRefreshToken');
@@ -36,11 +39,14 @@ const Landing = () => {
             <button onClick={handleDataPrint}>
                 Get Your Data!
             </button>
-            <button onClick={() => createPost()}>
+            <button onClick={() => {
+                createPost()
+                setRerender(!rerender)
+            }}>
                 Make a silly post!
             </button>
             <p>meow</p>
-            < PostList />
+            < PostList rerender={rerender}/>
         </div>
     )
 };

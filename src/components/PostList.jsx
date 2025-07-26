@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchTimeline } from "../utils/api"
 
-const PostList = () => {
+const PostList = ({rerender}) => {
 
     const convertToTimezone = (datestring) => {
         const date = new Date(datestring);
@@ -27,20 +27,20 @@ const PostList = () => {
             let timeline = await fetchTimeline();
             console.log(timeline);
 
-            timeline = timeline.reverse().map(post => (
-                <>
+            timeline = timeline.reverse().map((post,index) => (
+                <div key={index} id={index}>
                     <h2>{post.user.display_name}</h2>
                     <h3>@{post.user.username}</h3>
                     <p>{post.text}</p>
                     <p>{convertToTimezone(post.time_posted)}</p>
-                </>
+                </div>
             ))
 
             setPosts(timeline);
         }
 
         getTimeline();
-    }, []) 
+    }, [rerender]) 
 
     return (
         <div>
