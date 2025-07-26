@@ -33,7 +33,6 @@ const PostList = () => {
                     <h3>@{post.user.username}</h3>
                     <p>{post.text}</p>
                     <p>{convertToTimezone(post.time_posted)}</p>
-                    <p>{post.time_posted}</p>
                 </>
             ))
 

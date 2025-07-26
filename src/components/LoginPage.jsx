@@ -1,9 +1,7 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { useEffect } from 'react';
 import { useNavigate } from "react-router";
-import axios, { AxiosError } from 'axios';
 import { loginUser } from '../utils/api'
-import { saveTokens } from "../utils/utility";
 const LoginPage = () => {
 
     const nav = useNavigate();
