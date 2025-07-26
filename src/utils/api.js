@@ -24,11 +24,11 @@ export const createPost = () => {
         text: `hey guys it's ${timestamp}`
     };
 
-    axios.post('http://127.0.0.1:5000/posts', post, headers).then(console.log)
+    axios.post(`${backendUrl}/posts`, post, headers).then(console.log)
 }
 
 export const fetchTimeline = async () => {
-    return axios.get('http://127.0.0.1:5000/posts/timeline', getAuthHeaders()).then(response => response.data.posts);
+    return axios.get(`${backendUrl}/posts/timeline`, getAuthHeaders()).then(response => response.data.posts);
 
 }
 
@@ -48,7 +48,7 @@ const createNewUser = (googleToken) => {
 
     console.log(userData);
 
-    axios.post('http://127.0.0.1:5000/users', userData, headers).then(response => {
+    axios.post(`${backendUrl}/users`, userData, headers).then(response => {
         console.log(response.data);
     })
 }
@@ -58,7 +58,7 @@ export const loginUser = async ({ credential }) => {
     const userToken = credential
     const credentials = {credential: userToken}
 
-    const response = await axios.post('http://127.0.0.1:5000/api/login', credentials);
+    const response = await axios.post(`${backendUrl}/api/login`, credentials);
     saveTokens(response);
 
     console.log(response)
