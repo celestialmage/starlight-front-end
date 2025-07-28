@@ -25,11 +25,10 @@ const PostList = ({rerender}) => {
     useEffect(() => {
         const getTimeline = async () => {
             let timeline = await fetchWithAuth(fetchTimeline);
-            
+
             timeline = timeline.reverse().map((post,index) => (
                 <div key={index} id={index}>
-                    <h2>{post.user.display_name}</h2>
-                    <h3>@{post.user.username}</h3>
+                    <h2>{post.user.display_name} - @{post.user.username}</h2>
                     <p>{post.text}</p>
                     <p>{convertToTimezone(post.time_posted)}</p>
                 </div>

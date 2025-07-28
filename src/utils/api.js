@@ -10,44 +10,34 @@ const getAuthHeaders = () => {
             Authorization: `Bearer ${localStorage.getItem('StarlightAccessToken')}`,
             'Content-Type': 'application/json'
         }
-    }
-}
+    };
+};
 
-export const createPost = () => {
-
-    const now = new Date();
-    const timestamp = now.getTime();
+export const createPost = (postData) => {
 
     const headers = getAuthHeaders();
 
-    const post = {
-        text: `hey guys it's ${timestamp}`
-    };
-
-    return axios.post(`${backendUrl}/posts`, post, headers).then(response => response['data']['post']).catch(error => error)
+    return axios.post(`${backendUrl}/posts`, postData, headers).then(response => response['data']['post']).catch(error => error);
 }
 
-export const fetchTimeline = async () => {
+export const fetchTimeline = () => {
     return axios.get(`${backendUrl}/posts/timeline`, getAuthHeaders()).then(response => response.data.posts).catch(error => error);
 
 }
 
-const createNewUser = (googleToken) => {
+const createNewUser = (googleToken, userData) => {
     const user = jwtDecode(googleToken);
-    const headers = getAuthHeaders()
+    const headers = getAuthHeaders();
 
-    const userData = {
-        email: user.email,
-        id: user.sub,
-        username: user.given_name + user.family_name,
-        display_name: user.given_name + ' ' + user.family_name,
-        bio: `I'm ${user.name}`
-    }
+    // const userData = {
+    //     email: user.email,
+    //     id: user.sub,
+    //     username: user.given_name + user.family_name,
+    //     display_name: user.given_name + ' ' + user.family_name,
+    //     bio: `I'm ${user.name}`
+    // };
 
-    axios.post(`${backendUrl}/users`, userData, headers).then(response => {
-        // console.log(response.data);
-        "meow" + response;
-    })
+    axios.post(`${backendUrl}/users`, userData, headers).then(response => response);
 }
 
 export const loginUser = async ({ credential }) => {
@@ -66,9 +56,7 @@ export const loginUser = async ({ credential }) => {
 // this function will be used when calling ANY api function that retrieves or posts data
 // api_function is a callback function.
 export async function fetchWithAuth (api_function, options = {}) { 
-    let response = await api_function()
-
-    console.log(response);
+    let response = await api_function(options)
 
     if (response.status === 401 && localStorage.getItem('StarlightRefreshToken')) {
         const refreshUrl = `${backendUrl}/api/refresh`;
@@ -79,16 +67,13 @@ export async function fetchWithAuth (api_function, options = {}) {
             }
         }
 
-        const refreshResponse = await axios.post(refreshUrl, {"message": "hey guys"}, headers)
-            // .catch(error => error);
-
-        let meow = "meow";
-
+        const refreshResponse = await axios.post(refreshUrl, options, headers)
+        
         if (refreshResponse.statusText === "OK") {
             const newAccessToken = refreshResponse.data.access_token;
             localStorage.setItem('StarlightAccessToken', newAccessToken);
 
-            response = await api_function()
+            response = await api_function(options)
         } else {
             localStorage.removeItem('StarlightAccessToken');
             localStorage.removeItem('StarlightRefreshToken');

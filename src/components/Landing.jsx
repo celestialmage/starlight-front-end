@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import LogoutButton from "./LogoutButton";
 import { fetchWithAuth, createPost } from '../utils/api'
 import PostList from "./PostList";
+import PostForm from "./PostForm";
 
 const Landing = () => {
     const nav = useNavigate();
@@ -35,6 +36,7 @@ const Landing = () => {
 
     return (
         <div>
+            < PostForm />
             < LogoutButton />
             <button onClick={handleDataPrint}>
                 Get Your Data!
