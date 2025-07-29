@@ -1,0 +1,32 @@
+.post {
+    border-radius: 10px;
+    background-color: white;
+    width: 80%;
+    margin-top: 1em;
+    align-self: center;
+    padding: 1em;
+    overflow-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-head {
+    margin: 0px;
+    padding: 0px;
+}
+
+.post-display-name {
+    margin: 0px;
+    padding: 0px;
+}
+
+.post-user-name {
+    font-size: 14px;
+    color: darkgrey;
+    margin: 0px;
+    padding: 0px;
+}
+
+.post-timestamp {
+    font-size: 10px;
+}

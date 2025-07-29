@@ -1,0 +1,15 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    height: auto;
+}
+
+.menu button {
+    width: 90%;
+    margin: 2%;
+    align-self: center;
+}

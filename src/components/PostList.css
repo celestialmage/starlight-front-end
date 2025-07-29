@@ -1,0 +1,9 @@
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    width: 100vw;
+    overflow: scroll;
+    margin-top: 80px;
+}

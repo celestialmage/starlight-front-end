@@ -1,38 +1,18 @@
 import { useState, useEffect } from 'react';
 import { fetchWithAuth, fetchTimeline } from "../utils/api"
+import Post from './Post';
+import './PostList.css';
 
 const PostList = ({rerender}) => {
 
-    const convertToTimezone = (datestring) => {
-        const date = new Date(datestring);
-
-        const formatted = new Intl.DateTimeFormat('en-US', {
-            weekday: 'short',
-            year: 'numeric',
-            month: 'short',
-            day: '2-digit',
-            hour: 'numeric',
-            minute: '2-digit',
-            timeZoneName: 'short',
-            hour12: true,
-            }).format(date);
-
-        return formatted;
-    }
-
     const [posts, setPosts] = useState([]);
+    const timeline = posts.map((post,index) => (
+        < Post post={post} index={index} key={index} />
+    ))
 
     useEffect(() => {
         const getTimeline = async () => {
             let timeline = await fetchWithAuth(fetchTimeline);
-
-            timeline = timeline.reverse().map((post,index) => (
-                <div key={index} id={index}>
-                    <h2>{post.user.display_name} - @{post.user.username}</h2>
-                    <p>{post.text}</p>
-                    <p>{convertToTimezone(post.time_posted)}</p>
-                </div>
-            ))
 
             setPosts(timeline);
         }
@@ -41,8 +21,8 @@ const PostList = ({rerender}) => {
     }, [rerender]) 
 
     return (
-        <div>
-            {posts}
+        <div className={'timeline'} >
+            {timeline}
         </div>
     )
 }   

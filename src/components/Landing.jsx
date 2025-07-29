@@ -1,32 +1,15 @@
-import { GoogleLogin } from "@react-oauth/google";
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router";
-import { jwtDecode } from "jwt-decode";
 import LogoutButton from "./LogoutButton";
-import { fetchWithAuth, createPost } from '../utils/api'
 import PostList from "./PostList";
 import PostForm from "./PostForm";
+import './Landing.css';
 
 const Landing = () => {
     const nav = useNavigate();
 
     const [rerender, setRerender] = useState(true);
-
-
-    const handleLogout = () => {
-        localStorage.removeItem('StarlightAccessToken');
-        localStorage.removeItem('StarlightRefreshToken');
-        nav('/login');
-    }
     
-    const handleDataPrint = () => {
-        const accessToken = localStorage.getItem('StarlightAccessToken');
-        const refreshToken = localStorage.getItem('StarlightRefreshToken');
-
-        console.log(`Refresh token: ${refreshToken ? true : false}`);
-        console.log(`Access token: ${accessToken ? true: false}`);
-    
-    }
 
     useEffect(() => {
         if (localStorage.getItem('StarlightRefreshToken') === null) {
@@ -36,18 +19,10 @@ const Landing = () => {
 
     return (
         <div>
-            < PostForm />
-            < LogoutButton />
-            <button onClick={handleDataPrint}>
-                Get Your Data!
-            </button>
-            <button onClick={() => {
-                fetchWithAuth(createPost)
-                setRerender(!rerender)
-            }}>
-                Make a silly post!
-            </button>
-            <p>meow</p>
+            <div className="menu">
+                < PostForm setRerender={setRerender}/>
+                < LogoutButton />
+            </div>
             < PostList rerender={rerender}/>
         </div>
     )

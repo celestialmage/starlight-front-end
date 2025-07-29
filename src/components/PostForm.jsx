@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { createPost, fetchWithAuth } from '../utils/api';
+import './PostForm.css';
 
-const PostForm = () => {
+const PostForm = ({setRerender}) => {
 
     const defaultForm = {
         text: ''
     };
     
     const [formData, setFormData] = useState(defaultForm);
+    const maxPostLength = 200
 
     const handleChange = ({ target }) => {
         
@@ -35,7 +37,7 @@ const PostForm = () => {
                     type='text'
                     value={formData.text}
                     onChange={handleChange}
-                    maxLength={240}
+                    maxLength={maxPostLength}
                     required
                  />
                  <button type='submit'>Post</button>

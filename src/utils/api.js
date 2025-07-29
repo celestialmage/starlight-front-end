@@ -73,6 +73,8 @@ export async function fetchWithAuth (api_function, options = {}) {
             const newAccessToken = refreshResponse.data.access_token;
             localStorage.setItem('StarlightAccessToken', newAccessToken);
 
+            console.log('New Refresh Token received.')
+
             response = await api_function(options)
         } else {
             localStorage.removeItem('StarlightAccessToken');
