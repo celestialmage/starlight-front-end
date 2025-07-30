@@ -1,15 +1,14 @@
 import { timeAgo } from "../utils/utility";
 import './Post.css';
 
-const Post = ({ post, index, setFocusId, togglePostDetails }) => {
+const Post = ({ post, index, togglePostDetails }) => {
 
-    const handleClick = () => {
-        setFocusId(post.id)
-        togglePostDetails();
+    const handleClick = (postId) => {
+        togglePostDetails(postId);
     };
 
     return (
-        <div className="post" key={index} id={post.id} onClick={handleClick} >
+        <div className="post" key={index} id={post.id} onClick={() => handleClick(post.id)} >
             <div className="post-head">
                 <div className="user-data">
                     <h3 className="post-display-name">{post.user.display_name}</h3>

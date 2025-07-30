@@ -1,41 +1,32 @@
-import { useEffect, useState } from 'react';
-import { fetchPostDetails, fetchWithAuth } from '../utils/api';
 import { timeAgo } from "../utils/utility"
 import ReplyList from './ReplyList';
+import './PostDetails.css';
 
-const PostDetails = ({ postId }) => {
+const PostDetails = ({ post, setRenderPost }) => {
 
-    const [post, setPost] = useState({});
+    const handleClick = () => {
+        setRenderPost(renderPost => !renderPost);
+    };
 
-    useEffect(() => {
-        fetchWithAuth(fetchPostDetails, { postId: postId })
-            .then(setPost)
-            .catch(error => console.log(error));
-    }, []);
-
-    try {
-        return post && (
-            <div className="expanded-post">
-                <div className="post" id={post.id} >
-                    <div className="post-head">
-                        <div className="user-data">
-                            <h3 className="post-display-name">{post.user.display_name}</h3>
-                            <h4 className="post-user-name">@{post.user.username}</h4>
-                        </div>
-                        <div className="time-data">
-                            <p className="post-timestamp">{timeAgo(post.time_posted)}</p>
-                        </div>
+    return (
+        <div className="expanded-post" onClick={handleClick}>
+            <div className="post" id={post.id} >
+                <div className="post-head">
+                    <div className="user-data">
+                        <h3 className="post-display-name">{post.user.display_name}</h3>
+                        <h4 className="post-user-name">@{post.user.username}</h4>
                     </div>
-                    <p className="post-text">{post.text}</p>
+                    <div className="time-data">
+                        <p className="post-timestamp">{timeAgo(post.time_posted)}</p>
+                    </div>
                 </div>
-                <div className="replies">
-                    <ReplyList replies={post.replies} />
-                </div>
+                <p className="post-text">{post.text}</p>
             </div>
-        );
-    } catch {
-        console.log(post);
-    }
+            <div className="replies">
+                <ReplyList replies={post.replies} />
+            </div>
+        </div>
+    );
 };
 
 export default PostDetails;

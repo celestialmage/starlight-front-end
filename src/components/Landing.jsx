@@ -6,17 +6,22 @@ import PostForm from "./PostForm";
 import './Landing.css';
 import PostDetails from './PostDetails';
 import Home from './Home';
+import { fetchWithAuth, fetchPostDetails } from '../utils/api';
 
 const Landing = () => {
     const nav = useNavigate();
 
     const [rerender, setRerender] = useState(true);
     const [renderPost, setRenderPost] = useState(false);
-    const [focusId, setFocusId] = useState(null);
+    const [focusPost, setFocusPost] = useState({});
 
-    const togglePostDetails = () => {
+    const togglePostDetails = async (postId) => {
+        const post = await fetchWithAuth(fetchPostDetails, { postId: postId });
+
+        setFocusPost(post);
         setRenderPost(!renderPost);
-        console.log(focusId)
+
+        console.log(rerender, focusPost);
     };
 
     useEffect(() => {
@@ -28,13 +33,12 @@ const Landing = () => {
     return (
         <div>
             <div>
-                {renderPost && < PostDetails focusId={focusId}/>}
+                {renderPost && < PostDetails post={focusPost} setRenderPost={setRenderPost}/>}
             </div>
             <div className='container'>
                 < Home  setRerender={setRerender} />
                 < PostList 
                     rerender={rerender} 
-                    setFocusId={setFocusId} 
                     togglePostDetails={togglePostDetails}
                 />
             </div>
