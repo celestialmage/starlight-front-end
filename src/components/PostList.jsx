@@ -6,7 +6,7 @@ import './PostList.css';
 const PostList = ({rerender, setFocusId, togglePostDetails}) => {
 
     const [posts, setPosts] = useState([]);
-    const timeline = posts.map((post,index) => (
+    const timeline = posts.reverse().map((post,index) => (
         < Post post={post} index={index} key={index} setFocusId={setFocusId} togglePostDetails={togglePostDetails} />
     ));
 
