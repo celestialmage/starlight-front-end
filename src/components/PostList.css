@@ -4,8 +4,6 @@
     flex-direction: column;
     width: 60%;
     align-self: center;
-    overflow: scroll;
-    align-items: center;
     /* background-color: red; */
 }
 

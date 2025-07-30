@@ -18,7 +18,7 @@
     flex-direction: column;
     justify-content: center;
     background-color: lightblue;
-    
+    height: 100%;
 }
 
 @media all and (min-width: 768px) {
