@@ -1,7 +1,6 @@
 .post {
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: white;
-    box-shadow: 12em;
     width: 80%;
     margin-top: 1em;
     align-self: center;
@@ -9,14 +8,6 @@
     overflow-wrap: break-word;
     display: flex;
     flex-direction: column;
-    transform: scale(1);
-    transition: transform 0.5s ease-in-out;
-}
-
-.post:hover {
-    transform: scale(1.02);
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
 }
 
 .post-head {
@@ -40,14 +31,4 @@
 
 .post-timestamp {
     font-size: 10px;
-}
-
-@media all and (max-width: 768px) {
-    .post-display-name {
-        font-size: 14px;
-    }
-
-    .post-user-name {
-        font-size: 11px;
-    }
 }

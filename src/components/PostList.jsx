@@ -3,12 +3,12 @@ import { fetchWithAuth, fetchTimeline } from "../utils/api"
 import Post from './Post';
 import './PostList.css';
 
-const PostList = ({rerender}) => {
+const PostList = ({rerender, setFocusId, togglePostDetails}) => {
 
     const [posts, setPosts] = useState([]);
     const timeline = posts.map((post,index) => (
-        < Post post={post} index={index} key={index} />
-    ))
+        < Post post={post} index={index} key={index} setFocusId={setFocusId} togglePostDetails={togglePostDetails} />
+    ));
 
     useEffect(() => {
         const getTimeline = async () => {

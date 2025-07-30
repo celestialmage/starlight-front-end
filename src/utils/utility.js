@@ -1,21 +1,46 @@
+export const getAuthHeaders = () => {
+    return {
+        "headers": {
+            Authorization: `Bearer ${localStorage.getItem('StarlightAccessToken')}`,
+            'Content-Type': 'application/json'
+        }
+    };
+};
+
 export function saveTokens ({ data }) {
     localStorage.setItem('StarlightAccessToken', data.access_token);
     localStorage.setItem('StarlightRefreshToken', data.refresh_token);
 };
 
-export const convertToTimezone = (datestring) => {
-    const date = new Date(datestring);
+export const timeAgo = (dateString) => {
+    const now = new Date();
+    const then = new Date(dateString);
+    const diffMs = now - then;
 
-    const formatted = new Intl.DateTimeFormat('en-US', {
-        weekday: 'short',
-        year: 'numeric',
-        month: 'short',
-        day: '2-digit',
-        hour: 'numeric',
-        minute: '2-digit',
-        timeZoneName: 'short',
-        hour12: true,
-        }).format(date);
+    const seconds = Math.floor(diffMs / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours   = Math.floor(minutes / 60);
+    const days    = Math.floor(hours / 24);
 
-    return formatted;
+    if (days >= 2) {
+        // Format as MM/DD/YY
+        const mm = then.getMonth() + 1;
+        const dd = then.getDate();
+        const yy = then.getFullYear().toString().slice(-2);
+        return `${mm}/${dd}/${yy}`;
+    }
+
+    if (days === 1) {
+        return "yesterday";
+    }
+
+    if (hours >= 1) {
+        return `${hours}h`;
+    }
+
+    if (minutes >= 1) {
+        return `${minutes}m`;
+    }
+
+    return `${seconds}s`;
 }

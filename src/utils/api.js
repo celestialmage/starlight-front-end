@@ -1,23 +1,14 @@
 import axios, { AxiosHeaders } from 'axios';
-import { saveTokens } from './utility';
-import { jwtDecode } from 'jwt-decode';
+import { saveTokens, getAuthHeaders } from './utility';
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
-const getAuthHeaders = () => {
-    return {
-        "headers": {
-            Authorization: `Bearer ${localStorage.getItem('StarlightAccessToken')}`,
-            'Content-Type': 'application/json'
-        }
-    };
-};
+const createNewUser = (googleToken, userData) => {
+    return axios.post(`${backendUrl}/users`, userData, getAuthHeaders()).then(response => response).catch(error => error);
+}
 
 export const createPost = (postData) => {
-
-    const headers = getAuthHeaders();
-
-    return axios.post(`${backendUrl}/posts`, postData, headers).then(response => response['data']['post']).catch(error => error);
+    return axios.post(`${backendUrl}/posts`, postData, getAuthHeaders()).then(response => response['data']['post']).catch(error => error);
 }
 
 export const fetchTimeline = () => {
@@ -25,19 +16,9 @@ export const fetchTimeline = () => {
 
 }
 
-const createNewUser = (googleToken, userData) => {
-    const user = jwtDecode(googleToken);
-    const headers = getAuthHeaders();
-
-    // const userData = {
-    //     email: user.email,
-    //     id: user.sub,
-    //     username: user.given_name + user.family_name,
-    //     display_name: user.given_name + ' ' + user.family_name,
-    //     bio: `I'm ${user.name}`
-    // };
-
-    axios.post(`${backendUrl}/users`, userData, headers).then(response => response);
+export const fetchPostDetails = (options) => {
+    console.log(options)
+    return axios.get(`${backendUrl}/posts/${options.postId}`, getAuthHeaders()).then(response => response.data.post).catch(error => error);
 }
 
 export const loginUser = async ({ credential }) => {

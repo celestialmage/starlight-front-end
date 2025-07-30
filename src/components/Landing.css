@@ -1,15 +1,28 @@
 .menu {
     display: flex;
     flex-direction: column;
-    position: fixed;
     top: 0;
-    width: 100%;
     background-color: white;
     height: auto;
+    align-items: center;
 }
 
 .menu button {
-    width: 90%;
     margin: 2%;
     align-self: center;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: center;
+    background-color: lightblue;
+    
+}
+
+@media all and (min-width: 768px) {
+    .container {
+        width: 100vw;
+    }
 }

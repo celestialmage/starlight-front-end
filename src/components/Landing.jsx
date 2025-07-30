@@ -4,26 +4,40 @@ import LogoutButton from "./LogoutButton";
 import PostList from "./PostList";
 import PostForm from "./PostForm";
 import './Landing.css';
+import PostDetails from './PostDetails';
+import Home from './Home';
 
 const Landing = () => {
     const nav = useNavigate();
 
     const [rerender, setRerender] = useState(true);
-    
+    const [renderPost, setRenderPost] = useState(false);
+    const [focusId, setFocusId] = useState(null);
+
+    const togglePostDetails = () => {
+        setRenderPost(!renderPost);
+        console.log(focusId)
+    };
 
     useEffect(() => {
         if (localStorage.getItem('StarlightRefreshToken') === null) {
             return nav('/login');
         }
-    })
+    });
 
     return (
         <div>
-            <div className="menu">
-                < PostForm setRerender={setRerender}/>
-                < LogoutButton />
+            <div>
+                {renderPost && < PostDetails focusId={focusId}/>}
             </div>
-            < PostList rerender={rerender}/>
+            <div className='container'>
+                < Home  setRerender={setRerender} />
+                < PostList 
+                    rerender={rerender} 
+                    setFocusId={setFocusId} 
+                    togglePostDetails={togglePostDetails}
+                />
+            </div>
         </div>
     )
 };
