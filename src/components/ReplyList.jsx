@@ -1,9 +1,14 @@
 import Reply from './Reply';
 
 const ReplyList = ({replies}) => {
-    return replies.map((reply, index) => {
-        <Reply reply={reply} key={index}/>
-    })
+
+    return (
+        <div className='post replies'>
+            {replies.map((reply, index) => 
+                <Reply reply={reply} key={index}/>
+            )}
+        </div>
+    )
 }
 
 export default ReplyList;

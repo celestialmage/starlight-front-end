@@ -17,7 +17,6 @@ export const fetchTimeline = () => {
 }
 
 export const fetchPostDetails = (options) => {
-    console.log(options)
     return axios.get(`${backendUrl}/posts/${options.postId}`, getAuthHeaders()).then(response => response.data.post).catch(error => error);
 }
 

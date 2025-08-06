@@ -32,9 +32,6 @@ const Landing = () => {
 
     return (
         <div>
-            <div>
-                {renderPost && < PostDetails post={focusPost} setRenderPost={setRenderPost}/>}
-            </div>
             <div className='container'>
                 < Home  setRerender={setRerender} />
                 < PostList 

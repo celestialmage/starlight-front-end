@@ -1,18 +1,14 @@
-import { timeAgo } from "../utils/utility"
+import { timeAgo } from "../utils/utility";
+import './Reply.css';
 
 const Reply = ({reply}) => {
+
+    console.log("In Reply");
     return (
         <div className="reply" id={reply.id}>
-            <div>
-                <div>
-                    <h3>{reply.user.display_name}</h3>
-                    <h4>@{reply.user.username}</h4>
-                </div>
-                <div>
-                    <p>{timeAgo(reply.time_posted)}</p>
-                </div>
-            </div>
-            <p>{reply.text}</p>
+            <p className="text time">{timeAgo(reply.time_posted)}</p>
+            <p className="text username">@{reply.user.username} - </p>
+            <p className="text">{reply.text}</p>
         </div>
     )
 }

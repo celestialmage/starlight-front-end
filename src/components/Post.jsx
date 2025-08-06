@@ -1,10 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { timeAgo } from "../utils/utility";
 import './Post.css';
 
-const Post = ({ post, index, togglePostDetails }) => {
+const Post = ({ post, index }) => {
 
-    const handleClick = (postId) => {
-        togglePostDetails(postId);
+    const nav = useNavigate();
+
+    const handleClick = () => {
+        nav(`/${post.user.username}/${post.id}`)
     };
 
     return (
