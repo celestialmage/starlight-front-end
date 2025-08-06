@@ -4,7 +4,7 @@ import LogoutButton from "./LogoutButton";
 import PostList from "./PostList";
 import PostForm from "./PostForm";
 import './Landing.css';
-import PostDetails from './PostDetails';
+import PostDetails from '../post/PostDetails';
 import Home from './Home';
 import { fetchWithAuth, fetchPostDetails } from '../utils/api';
 

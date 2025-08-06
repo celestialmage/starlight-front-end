@@ -1,8 +1,8 @@
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom';
-import Landing from './components/Landing';
+import Landing from './components/timeline/Landing';
 import LoginPage from './components/LoginPage';
-import PostDetails from './components/PostDetails';
+import PostDetails from './components/post/PostDetails';
 import './App.css';
 
 function App() {
