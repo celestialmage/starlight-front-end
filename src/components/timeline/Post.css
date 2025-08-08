@@ -1,53 +1,313 @@
 .post {
-    border-radius: 20px;
-    background-color: white;
-    box-shadow: 12em;
-    width: 80%;
-    margin-top: 1em;
-    align-self: center;
-    padding: 1em;
-    overflow-wrap: break-word;
-    display: flex;
-    flex-direction: column;
-    transform: scale(1);
-    transition: transform 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 20px;
+  border-bottom: 1px solid #2f3336;
+  background-color: #000;
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+  margin: 0;
+  overflow-wrap: break-word;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .post:hover {
-    transform: scale(1.02);
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
+  background-color: rgba(255, 255, 255, 0.03);
+  transform: none;
+  transition: all 0.15s ease;
+}
+
+.post:hover::before {
+  opacity: 1;
+}
+
+.post::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #1d9bf0;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.post-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.post-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.display-name {
+  font-weight: bold;
+  color: #fff;
+}
+
+.username {
+  color: #71767b;
+  font-size: 14px;
+}
+
+.post-time {
+  color: #71767b;
+  font-size: 14px;
+}
+
+.post-time::before {
+  content: "·";
+  margin-right: 8px;
+}
+
+/* ALWAYS VISIBLE post text - no hover required */
+.post-text {
+  color: #fff !important;
+  font-size: 15px !important;
+  line-height: 1.3125 !important;
+  margin: 12px 0 0 0 !important;
+  word-wrap: break-word !important;
+  white-space: pre-wrap !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  font-weight: 400 !important;
+}
+
+.post-image {
+  margin-bottom: 12px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.post-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  margin-top: 16px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.post:hover .post-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #71767b;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 20px;
+  transition: all 0.2s;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.action-btn:hover {
+  background-color: rgba(29, 155, 240, 0.1);
+  color: #1d9bf0;
+}
+
+.reply-btn:hover {
+  background-color: rgba(29, 155, 240, 0.1);
+  color: #1d9bf0;
+}
+
+.like-btn:hover {
+  background-color: rgba(249, 24, 128, 0.1);
+  color: #f91880;
+}
+
+.like-btn.liked {
+  color: #f91880;
+}
+
+.share-btn:hover {
+  background-color: rgba(0, 186, 124, 0.1);
+  color: #00ba7c;
+}
+
+.action-icon {
+  font-size: 16px;
+}
+
+.action-count {
+  font-size: 13px;
+  min-width: 20px;
+  text-align: left;
 }
 
 .post-head {
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
 }
 
+.user-data {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+/* ALWAYS VISIBLE display name and username */
 .post-display-name {
-    margin: 0px;
-    padding: 0px;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  line-height: 1.2 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .post-user-name {
-    font-size: 14px;
-    color: darkgrey;
-    margin: 0px;
-    padding: 0px;
+  font-size: 15px !important;
+  color: #71767b !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
+.time-data {
+  flex-shrink: 0;
+}
+
+/* ALWAYS VISIBLE timestamp */
 .post-timestamp {
-    font-size: 10px;
+  font-size: 15px !important;
+  color: #71767b !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-weight: 400 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-@media all and (max-width: 768px) {
-    .post-display-name {
-        font-size: 14px;
-    }
+.post-timestamp::before {
+  content: "·";
+  margin-right: 4px;
+  color: #71767b;
+}
 
-    .post-user-name {
-        font-size: 11px;
-    }
+/* Remove any avatar-related styles completely */
+.post-avatar,
+.avatar,
+.user-avatar {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Mobile responsiveness */
+@media all and (max-width: 768px) {
+  .post {
+    padding: 12px 16px;
+  }
+  
+  .post-display-name {
+    font-size: 14px !important;
+  }
+
+  .post-user-name {
+    font-size: 14px !important;
+  }
+  
+  .post-timestamp {
+    font-size: 14px !important;
+  }
+  
+  .post-text {
+    font-size: 14px !important;
+  }
+  
+  .post-actions {
+    gap: 60px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .post-head {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .user-data {
+    width: 100%;
+  }
+  
+  .time-data {
+    align-self: flex-start;
+  }
+  
+  .post-timestamp::before {
+    display: none;
+  }
+  
+  .post-actions {
+    gap: 40px;
+  }
+}
+
+/* FORCE all content to be always visible */
+.post *:not(.post-avatar):not(.avatar):not(.user-avatar) {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Twitter-like interaction states */
+.post:active {
+  transform: scale(0.998);
+}
+
+/* Enhanced focus states for accessibility */
+.post:focus-visible {
+  outline: 2px solid #1d9bf0;
+  outline-offset: -2px;
+}
+
+/* Ensure proper text rendering */
+.post-text,
+.post-display-name,
+.post-user-name,
+.post-timestamp {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

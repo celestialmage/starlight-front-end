@@ -26,6 +26,7 @@ const PostForm = ({setRerender}) => {
 
         fetchWithAuth(createPost, formData).then(console.log)
         setFormData(defaultForm)
+        setRerender(render => !render);
         
     }
 

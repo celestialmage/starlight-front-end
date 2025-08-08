@@ -11,6 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/login' element={<LoginPage />} />
+        {/* <Route path='/:username' element={< UserProfile />} /> */}
         <Route path='/:username/:postId' element={< PostDetails /> } />
         <Route path='/' element={<Landing />} />
       </Routes>

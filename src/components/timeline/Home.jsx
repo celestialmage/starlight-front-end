@@ -4,8 +4,8 @@ import LogoutButton from "./LogoutButton"
 const Home = ({ setRerender }) => {
     return (
         <div className="menu">
-            < PostForm setRerender={setRerender}/>
             < LogoutButton />
+            < PostForm setRerender={setRerender}/>
         </div>
     )
 }

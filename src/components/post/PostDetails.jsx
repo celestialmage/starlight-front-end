@@ -36,9 +36,11 @@ const PostDetails = () => {
                     <p className="post-text">{post.text}</p>
                     <h4 className='post-user-name'>{post.user_liked ? "liked" : "not liked"}</h4>
                 </div>
-                <div className="replies">
-                    {post.replies && <ReplyList replies={post.replies} />}
-                </div>
+                {post.replies && (
+                    <div className="replies">
+                        <ReplyList replies={post.replies} />
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -20,6 +20,10 @@ export const fetchPostDetails = (options) => {
     return axios.get(`${backendUrl}/posts/${options.postId}`, getAuthHeaders()).then(response => response.data.post).catch(error => error);
 }
 
+export const fetchUserByUsername = (username) => {
+    return axios.get(`${backendUrl}/users/${username}`, getAuthHeaders()).then(response => response.data.user).catch(error => error);
+}
+
 export const loginUser = async ({ credential }) => {
 
     const userToken = credential

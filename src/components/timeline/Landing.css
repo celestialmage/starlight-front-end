@@ -1,19 +1,143 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #000;
+    max-width: 600px;
+    margin: 0 auto;
+    border-left: 1px solid #2f3336;
+    border-right: 1px solid #2f3336;
+    position: relative;
+    overflow: hidden;
+}
+
 .menu {
     display: flex;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid #2f3336;
+    position: sticky;
     top: 0;
-    background-color: white;
-    height: auto;
-    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    flex-shrink: 0;
 }
 
 .menu button {
-    margin: 2%;
-    align-self: center;
+    margin: 0;
+    align-self: flex-end;
+    margin: 12px 20px 8px 20px;
 }
 
-@media all and (min-width: 768px) {
+/* Global button styles for consistency */
+button {
+    background-color: #1d9bf0;
+    color: #fff;
+    border: none;
+    border-radius: 9999px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+button:hover {
+    background-color: #1a8cd8;
+    transform: none;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Logout button specific styling */
+.menu button {
+    background-color: transparent;
+    color: #1d9bf0;
+    border: 1px solid #1d9bf0;
+    font-size: 14px;
+    padding: 6px 16px;
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+.menu button:hover {
+    background-color: rgba(29, 155, 240, 0.1);
+    color: #1d9bf0;
+    border-color: #1d9bf0;
+    transform: none;
+}
+
+/* Timeline container - takes remaining space */
+.container > div:last-child {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Mobile responsiveness */
+@media all and (max-width: 640px) {
     .container {
         width: 100vw;
+        max-width: 100vw;
+        border-left: none;
+        border-right: none;
+        height: 100vh;
     }
+    
+    .menu {
+        position: sticky;
+        top: 0;
+    }
+}
+
+@media all and (min-width: 641px) and (max-width: 1199px) {
+    .container {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+@media all and (min-width: 1200px) {
+    .container {
+        max-width: 600px;
+    }
+}
+
+/* Ensure proper scrolling behavior */
+.container {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling */
+.container > div:last-child::-webkit-scrollbar {
+    width: 6px;
+}
+
+.container > div:last-child::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.container > div:last-child::-webkit-scrollbar-thumb {
+    background: #2f3336;
+    border-radius: 3px;
+}
+
+.container > div:last-child::-webkit-scrollbar-thumb:hover {
+    background: #3f4346;
 }
