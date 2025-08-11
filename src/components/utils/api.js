@@ -39,7 +39,7 @@ export const fetchPostDetails = (options) => {
         .catch(error => error);
 }
 
-export const fetchUserByUsername = (username) => {
+export const fetchUserByUsername = ({username}) => {
     return axios
         .get(`${backendUrl}/users/${username}`, getAuthHeaders())
         .then(response => response.data.user)

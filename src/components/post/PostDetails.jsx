@@ -15,13 +15,17 @@ const PostDetails = () => {
     const [ replies, setReplies ] = useState([]);
     const params = useParams()
 
+    const addNewReply = (newReply) => {
+        setReplies([...replies, newReply]);
+    }
+
     const setNewPost = (post) => {
         setPost(post);
         setReplies(post.replies);
     };
 
-    const addNewReply = (newReply) => {
-        setReplies([...replies, newReply]);
+    const directToProfile = () => {
+        nav(`/${post.user.username}`)
     }
 
     useEffect(() => {
@@ -38,7 +42,7 @@ const PostDetails = () => {
                         <div className="user-data">
                             <button className='back-button button' onClick={() => nav(-1)}>Back</button>
                             <h3 className="post-display-name">{post.user.display_name}</h3>
-                            <h4 className="post-user-name">@{post.user.username}</h4>
+                            <h4 className="post-user-name" onClick={directToProfile}>@{post.user.username}</h4>
                         </div>
                         <div className="time-data">
                             <p className="post-timestamp">{timeAgo(post.time_posted)}</p>

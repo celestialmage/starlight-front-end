@@ -4,9 +4,9 @@
   background-color: #000000;
 }
 
-.reply:last-child {
+/* .reply:last-child {
   border-bottom: none;
-}
+} */
 
 .reply .username {
   font-size: 15px;

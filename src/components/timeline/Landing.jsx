@@ -42,11 +42,11 @@ const Landing = () => {
                     posts={posts}
                     setPosts={setPosts}
                 />
-                <div>
+                {/* <div>
                     <p>
-                        
+
                     </p>
-                </div>
+                </div> */}
             </div>
         </div>
     )
