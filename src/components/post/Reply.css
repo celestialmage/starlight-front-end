@@ -1,20 +1,31 @@
-/* .reply {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 10px;
-    padding-bottom: 0px;
-    margin-top: 10px;
-    padding-top: 0px;
+.reply {
+  padding: 12px 16px;
+  border-bottom: 1px solid #2f3336;
+  background-color: #000000;
 }
 
-.text {
-    padding-right: 5px;
+.reply:last-child {
+  border-bottom: none;
 }
 
-.time {
-    color: darkgray
+.reply .username {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1d9bf0;
+  margin: 0 0 4px 0;
 }
 
-.username {
-    font-weight: 700;
-} */
+.reply .text {
+  font-size: 15px;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+/* Ensure reply content is always visible */
+.reply .username,
+.reply .text {
+  opacity: 1 !important;
+  visibility: visible !important;
+}

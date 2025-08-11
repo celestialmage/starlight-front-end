@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { createPost, fetchWithAuth } from '../utils/api';
-import './PostForm.css';
+import { createReply, fetchWithAuth } from '../utils/api';
+import './ReplyForm.css';
 
-const PostForm = ({ addNewPost }) => {
+const ReplyForm = ({ postId, addNewReply }) => {
 
     const defaultForm = {
-        text: ''
+        text: '',
+        post_id: postId
     };
     
     const [formData, setFormData] = useState(defaultForm);
@@ -24,20 +25,20 @@ const PostForm = ({ addNewPost }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        fetchWithAuth(createPost, formData).then(addNewPost);
+        fetchWithAuth(createReply, formData).then(addNewReply);
         setFormData(defaultForm);
     }
 
     return (
-        <div className='post-form'>
-            <form onSubmit={handleSubmit}>
+        <div className='reply-section'>
+            <form className='reply-form' onSubmit={handleSubmit}>
                 <input 
                     name='text'
                     type='text'
                     value={formData.text}
                     onChange={handleChange}
                     maxLength={maxPostLength}
-                    placeholder="what's happening?"
+                    placeholder="something to say?"
                     required
                  />
                  <button type='submit'>Post</button>
@@ -46,4 +47,4 @@ const PostForm = ({ addNewPost }) => {
     )
 }
 
-export default PostForm;
+export default ReplyForm;

@@ -1,177 +1,20 @@
 .post {
-  display: flex;
-  flex-direction: column;
-  padding: 16px 20px;
+  padding: 12px 16px;
   border-bottom: 1px solid #2f3336;
-  background-color: #000;
-  border-radius: 0;
-  box-shadow: none;
-  width: 100%;
-  margin: 0;
-  overflow-wrap: break-word;
   cursor: pointer;
-  transition: all 0.15s ease;
-  position: relative;
-  z-index: 2;
+  transition: background-color 0.2s ease;
+  background-color: #000000;
 }
 
 .post:hover {
   background-color: rgba(255, 255, 255, 0.03);
-  transform: none;
-  transition: all 0.15s ease;
-}
-
-.post:hover::before {
-  opacity: 1;
-}
-
-.post::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background-color: #1d9bf0;
-  opacity: 0;
-  transition: opacity 0.15s ease;
-}
-
-.post-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.post-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-
-.post-author {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.display-name {
-  font-weight: bold;
-  color: #fff;
-}
-
-.username {
-  color: #71767b;
-  font-size: 14px;
-}
-
-.post-time {
-  color: #71767b;
-  font-size: 14px;
-}
-
-.post-time::before {
-  content: "·";
-  margin-right: 8px;
-}
-
-/* ALWAYS VISIBLE post text - no hover required */
-.post-text {
-  color: #fff !important;
-  font-size: 15px !important;
-  line-height: 1.3125 !important;
-  margin: 12px 0 0 0 !important;
-  word-wrap: break-word !important;
-  white-space: pre-wrap !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-  font-weight: 400 !important;
-}
-
-.post-image {
-  margin-bottom: 12px;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.post-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.post-actions {
-  display: flex;
-  align-items: center;
-  gap: 80px;
-  margin-top: 16px;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-}
-
-.post:hover .post-actions {
-  opacity: 1;
-}
-
-.action-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: none;
-  color: #71767b;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 20px;
-  transition: all 0.2s;
-  font-size: 13px;
-  font-family: inherit;
-}
-
-.action-btn:hover {
-  background-color: rgba(29, 155, 240, 0.1);
-  color: #1d9bf0;
-}
-
-.reply-btn:hover {
-  background-color: rgba(29, 155, 240, 0.1);
-  color: #1d9bf0;
-}
-
-.like-btn:hover {
-  background-color: rgba(249, 24, 128, 0.1);
-  color: #f91880;
-}
-
-.like-btn.liked {
-  color: #f91880;
-}
-
-.share-btn:hover {
-  background-color: rgba(0, 186, 124, 0.1);
-  color: #00ba7c;
-}
-
-.action-icon {
-  font-size: 16px;
-}
-
-.action-count {
-  font-size: 13px;
-  min-width: 20px;
-  text-align: left;
 }
 
 .post-head {
-  margin: 0;
-  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .user-data {
@@ -181,133 +24,97 @@
   flex: 1;
 }
 
-/* ALWAYS VISIBLE display name and username */
 .post-display-name {
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 15px !important;
-  font-weight: 700 !important;
-  color: #fff !important;
-  line-height: 1.2 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
 }
 
 .post-user-name {
-  font-size: 15px !important;
-  color: #71767b !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-weight: 400 !important;
-  line-height: 1.2 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
+  font-size: 15px;
+  font-weight: 400;
+  color: #71767b;
+  margin: 0;
 }
 
 .time-data {
   flex-shrink: 0;
 }
 
-/* ALWAYS VISIBLE timestamp */
 .post-timestamp {
-  font-size: 15px !important;
-  color: #71767b !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-weight: 400 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.post-timestamp::before {
-  content: "·";
-  margin-right: 4px;
+  font-size: 15px;
   color: #71767b;
+  margin: 0;
 }
 
-/* Remove any avatar-related styles completely */
-.post-avatar,
-.avatar,
-.user-avatar {
-  display: none !important;
-  visibility: hidden !important;
-  width: 0 !important;
-  height: 0 !important;
+.post-text {
+  font-size: 15px;
+  color: #ffffff;
+  margin: 8px 0 12px 0;
+  line-height: 1.4;
+  word-wrap: break-word;
 }
 
-/* Mobile responsiveness */
-@media all and (max-width: 768px) {
-  .post {
-    padding: 12px 16px;
-  }
-  
-  .post-display-name {
-    font-size: 14px !important;
-  }
-
-  .post-user-name {
-    font-size: 14px !important;
-  }
-  
-  .post-timestamp {
-    font-size: 14px !important;
-  }
-  
-  .post-text {
-    font-size: 14px !important;
-  }
-  
-  .post-actions {
-    gap: 60px;
-  }
+/* Post actions container (replies and likes) */
+.post > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-@media all and (max-width: 480px) {
-  .post-head {
-    flex-direction: column;
-    gap: 4px;
-  }
-  
-  .user-data {
-    width: 100%;
-  }
-  
-  .time-data {
-    align-self: flex-start;
-  }
-  
-  .post-timestamp::before {
-    display: none;
-  }
-  
-  .post-actions {
-    gap: 40px;
-  }
+/* Reply count styling */
+.post > div:last-child > p {
+  font-size: 13px;
+  color: #71767b;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
 }
 
-/* FORCE all content to be always visible */
-.post *:not(.post-avatar):not(.avatar):not(.user-avatar) {
-  opacity: 1 !important;
-  visibility: visible !important;
+.post > div:last-child > p:hover {
+  background-color: rgba(29, 155, 240, 0.1);
+  color: #1d9bf0;
 }
 
-/* Twitter-like interaction states */
-.post:active {
-  transform: scale(0.998);
+/* Like button styling - always red to indicate likes */
+.like-button {
+  background: transparent;
+  border: none;
+  color: #f91880;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-/* Enhanced focus states for accessibility */
-.post:focus-visible {
-  outline: 2px solid #1d9bf0;
-  outline-offset: -2px;
+.like-button:hover {
+  background-color: rgba(249, 24, 128, 0.1);
 }
 
-/* Ensure proper text rendering */
+.like-button.unliked {
+  color: #f91880;
+}
+
+.like-button.liked {
+  color: #f91880;
+  font-weight: 700;
+}
+
+.like-button.liked:hover {
+  background-color: rgba(249, 24, 128, 0.1);
+}
+
+/* Ensure post content is always visible */
 .post-text,
 .post-display-name,
 .post-user-name,
 .post-timestamp {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  opacity: 1 !important;
+  visibility: visible !important;
 }

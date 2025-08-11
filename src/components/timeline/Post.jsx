@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { timeAgo } from "../utils/utility";
+import LikeButton from './LikeButton';
 import './Post.css';
 
 const Post = ({ post, index }) => {
-
     const nav = useNavigate();
 
     const handleClick = () => {
@@ -22,6 +22,10 @@ const Post = ({ post, index }) => {
                 </div>
             </div>
             <p className="post-text">{post.text}</p>
+            <div>
+                <p>{post.reply_count} Replies</p>
+                < LikeButton post={post} />
+            </div>
         </div>
     );
 };

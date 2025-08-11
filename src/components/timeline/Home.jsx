@@ -1,11 +1,11 @@
 import PostForm from "./PostForm"
 import LogoutButton from "./LogoutButton"
 
-const Home = ({ setRerender }) => {
+const Home = ({ addNewPost }) => {
     return (
         <div className="menu">
             < LogoutButton />
-            < PostForm setRerender={setRerender}/>
+            < PostForm addNewPost={addNewPost} />
         </div>
     )
 }

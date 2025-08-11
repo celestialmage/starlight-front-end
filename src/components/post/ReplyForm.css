@@ -1,32 +1,31 @@
-.post-form {
+.reply-section {
   padding: 16px;
   border-bottom: 1px solid #2f3336;
 }
 
-.post-form form {
+.reply-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.post-form input {
+.reply-form input {
   background: transparent;
   border: none;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 18px;
   padding: 12px 0;
   outline: none;
-  resize: none;
   font-family: inherit;
   line-height: 1.4;
 }
 
-.post-form input::placeholder {
+.reply-form input::placeholder {
   color: #71767b;
-  font-size: 20px;
+  font-size: 18px;
 }
 
-.post-form button {
+.reply-form button {
   align-self: flex-end;
   background-color: #1d9bf0;
   border: none;
@@ -39,11 +38,11 @@
   transition: background-color 0.2s ease;
 }
 
-.post-form button:hover {
+.reply-form button:hover {
   background-color: #1a8cd8;
 }
 
-.post-form button:disabled {
+.reply-form button:disabled {
   background-color: #0f4e78;
   cursor: not-allowed;
 }

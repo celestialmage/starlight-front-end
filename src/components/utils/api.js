@@ -4,24 +4,56 @@ import { saveTokens, getAuthHeaders } from './utility';
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const createNewUser = (googleToken, userData) => {
-    return axios.post(`${backendUrl}/users`, userData, getAuthHeaders()).then(response => response).catch(error => error);
+    return axios
+    .post(`${backendUrl}/users`, userData, getAuthHeaders())
+    .then(response => response)
+    .catch(error => error);
 }
 
 export const createPost = (postData) => {
-    return axios.post(`${backendUrl}/posts`, postData, getAuthHeaders()).then(response => response['data']['post']).catch(error => error);
+    return axios
+        .post(`${backendUrl}/posts`, postData, getAuthHeaders())
+        .then(response => response['data']['post'])
+        .catch(error => error);
+}
+
+export const createReply = (replyData) => {
+    return axios
+        .post(`${backendUrl}/replies/post/${replyData.post_id}`, replyData, getAuthHeaders())
+        .then(response => response['data']['reply'])
+        .catch(error => error);
 }
 
 export const fetchTimeline = () => {
-    return axios.get(`${backendUrl}/posts/timeline`, getAuthHeaders()).then(response => response.data.posts).catch(error => error);
+    return axios
+        .get(`${backendUrl}/posts/timeline`, getAuthHeaders())
+        .then(response => response.data.posts)
+        .catch(error => error);
 
 }
 
 export const fetchPostDetails = (options) => {
-    return axios.get(`${backendUrl}/posts/${options.postId}`, getAuthHeaders()).then(response => response.data.post).catch(error => error);
+    return axios
+        .get(`${backendUrl}/posts/${options.postId}`, getAuthHeaders())
+        .then(response => response.data.post)
+        .catch(error => error);
 }
 
 export const fetchUserByUsername = (username) => {
-    return axios.get(`${backendUrl}/users/${username}`, getAuthHeaders()).then(response => response.data.user).catch(error => error);
+    return axios
+        .get(`${backendUrl}/users/${username}`, getAuthHeaders())
+        .then(response => response.data.user)
+        .catch(error => error);
+}
+
+export const likePost = ({postId}) => {
+    return axios
+        .post(`${backendUrl}/likes/${postId}`, {}, getAuthHeaders());
+}
+
+export const unlikePost = ({postId}) => {
+    return axios
+        .delete(`${backendUrl}/likes/${postId}`, getAuthHeaders());
 }
 
 export const loginUser = async ({ credential }) => {

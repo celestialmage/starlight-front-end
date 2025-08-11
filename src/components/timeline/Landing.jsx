@@ -6,38 +6,47 @@ import PostForm from "./PostForm";
 import './Landing.css';
 import PostDetails from '../post/PostDetails';
 import Home from './Home';
-import { fetchWithAuth, fetchPostDetails } from '../utils/api';
+import Post from './Post';
+import { fetchWithAuth, fetchTimeline } from '../utils/api';
 
 const Landing = () => {
     const nav = useNavigate();
 
-    const [rerender, setRerender] = useState(true);
-    const [renderPost, setRenderPost] = useState(false);
-    const [focusPost, setFocusPost] = useState({});
+    const [posts, setPosts] = useState([]);
 
-    const togglePostDetails = async (postId) => {
-        const post = await fetchWithAuth(fetchPostDetails, { postId: postId });
+    const getTimeline = async () => {
+        let timeline = await fetchWithAuth(fetchTimeline);
 
-        setFocusPost(post);
-        setRenderPost(!renderPost);
+        setPosts(timeline);
+    }
 
-        console.log(rerender, focusPost);
-    };
+    const addNewPost = (post) => {
+
+        setPosts([...posts, post]);
+        getTimeline();
+    }
 
     useEffect(() => {
         if (localStorage.getItem('StarlightRefreshToken') === null) {
             return nav('/login');
         }
-    });
+        
+       getTimeline();
+    }, []);
 
     return (
         <div>
             <div className='container'>
-                < Home  setRerender={setRerender} />
+                < Home addNewPost={addNewPost}/>
                 < PostList 
-                    rerender={rerender} 
-                    togglePostDetails={togglePostDetails}
+                    posts={posts}
+                    setPosts={setPosts}
                 />
+                <div>
+                    <p>
+                        
+                    </p>
+                </div>
             </div>
         </div>
     )

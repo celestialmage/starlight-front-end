@@ -1,4 +1,5 @@
 import Reply from './Reply';
+import './ReplyList.css';
 
 const ReplyList = ({replies}) => {
 

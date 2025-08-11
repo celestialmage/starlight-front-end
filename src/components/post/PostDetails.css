@@ -1,49 +1,76 @@
-/* .post {
-    border-radius: 10px;
-    background-color: white;
-    width: 80%;
-    margin-top: 1em;
-    align-self: center;
-    padding: 1em;
-    overflow-wrap: break-word;
-    display: flex;
-    flex-direction: column;
-    align-self: center;
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
+  border-left: 1px solid #2f3336;
+  border-right: 1px solid #2f3336;
+  background-color: #000000;
 }
 
 .expanded-post {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: orange;
-    justify-content: center;
-    align-self: center;
+  background-color: #000000;
 }
 
-.post-head {
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    justify-content: space-between;
+.expanded-post .post {
+  padding: 16px;
+  border-bottom: 1px solid #2f3336;
+  cursor: default;
 }
 
-.post-display-name {
-    margin: 0px;
-    padding: 0px;
+.expanded-post .post:hover {
+  background-color: #000000;
 }
 
-.post-user-name {
-    font-size: 14px;
-    color: darkgrey;
-    margin: 0px;
-    padding: 0px;
+.expanded-post .post-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
 }
 
-.post-timestamp {
-    font-size: 10px;
+.expanded-post .user-data {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.expanded-post .post-display-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.expanded-post .post-user-name {
+  font-size: 15px;
+  font-weight: 400;
+  color: #71767b;
+  margin: 0;
+}
+
+.expanded-post .post-timestamp {
+  font-size: 15px;
+  color: #71767b;
+  margin: 0;
+}
+
+.expanded-post .post-text {
+  font-size: 23px;
+  color: #ffffff;
+  margin: 16px 0 20px 0;
+  line-height: 1.3;
+  word-wrap: break-word;
 }
 
 .replies {
-    width: 100%
-} */
+  border-top: 1px solid #2f3336;
+}
+
+/* Ensure all content is always visible */
+.expanded-post .post-text,
+.expanded-post .post-display-name,
+.expanded-post .post-user-name,
+.expanded-post .post-timestamp {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
