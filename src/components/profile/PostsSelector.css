@@ -1,0 +1,60 @@
+.posts-list-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #000000;
+  color: #ffffff;
+}
+
+.list-selector {
+  display: flex;
+  border-bottom: 1px solid #333333;
+  background: #000000;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.posts-selector,
+.likes-selector {
+  flex: 1;
+  text-align: center;
+  padding: 16px 20px;
+  margin: 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  color: #71767b;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+  position: relative;
+}
+
+.posts-selector:hover,
+.likes-selector:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: #ffffff;
+}
+
+.posts-selector.active,
+.likes-selector.active {
+  color: #ffffff;
+  border-bottom-color: #1d9bf0;
+}
+
+.posts-selector.active::after,
+.likes-selector.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: #1d9bf0;
+  border-radius: 2px;
+}
+
+.posts-list {
+  background: #000000;
+}

@@ -1,5 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 import FollowButton from "./FollowButton";
+import './ProfileDetails.css';
 
 const ProfileDetails = ({ user }) => {
 
@@ -19,7 +20,7 @@ const ProfileDetails = ({ user }) => {
             <div>
                 <div className='user-details'>
                     <h3 className="user-display-name">{user.display_name}</h3>
-                    <h4 className="user-username">{user.username}</h4>
+                    <h4 className="user-username">@{user.username}</h4>
                     <p className='user-bio'>{user.bio}</p>
                 </div>
                 {button}

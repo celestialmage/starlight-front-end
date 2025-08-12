@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PostList from '../timeline/PostList';
-
+import './PostsSelector.css';
 
 const PostsSelector = ({ posts, likes }) => {
 

@@ -1,0 +1,65 @@
+.profile-details {
+  padding: 20px;
+  border-bottom: 1px solid #333333;
+  background: #000000;
+  color: #ffffff;
+}
+
+.profile-details > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.user-display-name {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+
+.user-username {
+  font-size: 15px;
+  font-weight: 400;
+  color: #71767b;
+  margin: 0 0 12px 0;
+}
+
+.user-bio {
+  color: white;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #ffffff;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.user-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.user-stats p {
+  margin: 0;
+  font-size: 14px;
+  color: #71767b;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.user-stats p:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.user-stats p strong {
+  color: #ffffff;
+  font-weight: 700;
+}

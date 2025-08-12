@@ -1,0 +1,28 @@
+.container {
+  min-height: 100vh;
+  background: #000000;
+  color: #ffffff;
+}
+
+.container > * {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Ensure consistent spacing between sections */
+.container > *:not(:last-child) {
+  border-bottom: 1px solid #333333;
+}
+
+/* Override any conflicting styles from other components */
+.container .home-container {
+  border-bottom: none;
+}
+
+.container .profile-details {
+  border-top: 1px solid #333333;
+}
+
+.container .posts-list-container {
+  border-top: none;
+}

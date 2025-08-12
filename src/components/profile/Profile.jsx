@@ -4,6 +4,7 @@ import { fetchWithAuth, fetchUserByUsername } from '../utils/api';
 import ProfileDetails from './ProfileDetails';
 import PostsSelector from './PostsSelector';
 import Home from '../home/Home';
+import './Profile.css';
 
 const Profile = () => {
 
