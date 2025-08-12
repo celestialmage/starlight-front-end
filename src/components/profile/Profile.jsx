@@ -29,7 +29,7 @@ const Profile = () => {
         // .then(console.log);
     }, [])
 
-    return userData && (
+    return Object.keys(userData).length !== 0 && (
         <div className='container'>
             < Home />
             < ProfileDetails user={userData} />

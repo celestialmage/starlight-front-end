@@ -15,7 +15,7 @@ const ProfileDetails = ({ user }) => {
         button = < FollowButton user={user} />
     }
 
-    return (
+    return user && (
         <div className='profile-details'>
             <div>
                 <div className='user-details'>
