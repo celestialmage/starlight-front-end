@@ -1,11 +1,15 @@
-import PostForm from "./PostForm"
-import LogoutButton from "./LogoutButton"
+import PostForm from "./PostForm";
+import LogoutButton from "./LogoutButton";
+import ProfileButton from "./ProfileButton";
+import HomeButton from "./HomeButton";
 
 const Home = ({ addNewPost }) => {
     return (
         <div className="menu">
+            < HomeButton />
+            < ProfileButton />
             < LogoutButton />
-            < PostForm addNewPost={addNewPost} />
+            {window.location.pathname === '/' && < PostForm addNewPost={addNewPost} />}
         </div>
     )
 }

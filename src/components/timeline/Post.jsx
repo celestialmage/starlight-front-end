@@ -14,9 +14,7 @@ const Post = ({ post, index }) => {
         event.stopPropogation();
         nav(`/${post.user.username}`);
     }
-
-    console.log(post);
-
+    
     return (
         <div className="post" key={index} id={post.id} onClick={() => handleClick(post.id)} >
             <div className="post-head">

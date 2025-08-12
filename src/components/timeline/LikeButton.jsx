@@ -3,8 +3,6 @@ import { likePost, unlikePost, fetchWithAuth } from '../utils/api';
 
 const LikeButton = ({ post }) => {
 
-    console.log(post);
-
     const [liked, setLiked] = useState(post.user_liked);
 
     let button;

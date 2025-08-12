@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchWithAuth, fetchPostDetails } from '../utils/api';
 import { timeAgo } from "../utils/utility"
+import Home from '../timeline/Home';
 import ReplyList from './ReplyList';
-import './PostDetails.css';
 import ReplyForm from '../post/ReplyForm';
 import LikeButton from '../timeline/LikeButton';
+import './PostDetails.css';
+
 
 const PostDetails = () => {
 
@@ -36,6 +38,7 @@ const PostDetails = () => {
 
     return post && (
         <div className='container'>
+            < Home />
             <div className="expanded-post">
                 <div className="post" id={post.id} >
                     <div className="post-head">

@@ -46,6 +46,26 @@ export const fetchUserByUsername = ({username}) => {
         .catch(error => error);
 }
 
+export const fetchUserByUserId = () => {
+    return axios
+        .get(`${backendUrl}/users`, getAuthHeaders())
+        .then(response => response.data.user)
+        .catch(error => error);
+}
+
+export const followUser = ({userId}) => {
+    return axios
+        .post(`${backendUrl}/follows/${userId}`, {}, getAuthHeaders())
+        .then(response => response.data)
+        .catch(error => error);
+};
+
+export const unfollowUser = ({ userId }) => {
+    return axios
+        .delete(`${backendUrl}/follows/${userId}`, getAuthHeaders())
+        .catch(error => error);
+}
+
 export const likePost = ({postId}) => {
     return axios
         .post(`${backendUrl}/likes/${postId}`, {}, getAuthHeaders());

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchWithAuth, fetchUserByUsername } from '../utils/api';
+import ProfileDetails from './ProfileDetails';
 import PostsSelector from './PostsSelector';
+import Home from '../timeline/Home';
 
 const Profile = () => {
 
@@ -9,9 +11,7 @@ const Profile = () => {
     const [ posts, setPosts ] = useState([]);
     const [ likes, setLikes ] = useState([]);
     const params = useParams();
-
-    console.log(userData);
-
+    
     useEffect(() => {
         const username = params['username'];
 
@@ -30,12 +30,9 @@ const Profile = () => {
 
     return userData && (
         <div className='container'>
-            {/* < ProfileDetails /> */}
-            <div>
-                < PostsSelector posts={posts} setPosts={setPosts} likes={likes} setLikes={setLikes} />
-            </div>
-            
-
+            < Home />
+            < ProfileDetails user={userData} />
+            < PostsSelector posts={posts} setPosts={setPosts} likes={likes} setLikes={setLikes} />
         </div>
     )
 
