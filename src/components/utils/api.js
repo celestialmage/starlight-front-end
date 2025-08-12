@@ -93,7 +93,7 @@ export const loginUser = async ({ credential }) => {
 
     if (response.data.user_found === false) {
         createNewUser(userToken);
-    }
+    } 
 }
 
 // this function will be used when calling ANY api function that retrieves or posts data

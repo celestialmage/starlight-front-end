@@ -34,16 +34,11 @@ const Landing = () => {
         <div>
             <div className='container'>
                 < Home addNewPost={addNewPost}/>
-                < PostList 
+                { posts && < PostList 
                     posts={posts}
                     setPosts={setPosts}
-                />
-                {/* <div>
-                    <p>
-
-                    </p>
-                </div> */}
-            </div>
+                /> }
+            </div> 
         </div>
     )
 };

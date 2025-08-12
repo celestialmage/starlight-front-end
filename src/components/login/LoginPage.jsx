@@ -1,7 +1,9 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { useEffect } from 'react';
 import { useNavigate } from "react-router";
-import { loginUser } from './utils/api'
+import { loginUser } from '../utils/api'
+import './LoginPage.css';
+
 const LoginPage = () => {
 
     const nav = useNavigate();
@@ -27,11 +29,6 @@ const LoginPage = () => {
                 }}
                 auto_select={true}
             />
-            <div>
-                {/* <button onClick={fakeLogin}>
-                    Fake Login
-                </button> */}
-            </div>
         </div>
     )
 };
