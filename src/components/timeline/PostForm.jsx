@@ -18,7 +18,6 @@ const PostForm = ({ addNewPost }) => {
             [target.name]: target.value
         });
 
-        console.log(formData);
     }
 
     const handleSubmit = (event) => {

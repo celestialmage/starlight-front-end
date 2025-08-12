@@ -30,7 +30,7 @@
 
 .expanded-post .user-data {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 4px;
 }
 
@@ -50,7 +50,7 @@
   font-size: 15px;
   font-weight: 400;
   color: #71767b;
-  margin: 0;
+  margin-left: 5px;
   padding: 5px;
 }
 

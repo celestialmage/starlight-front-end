@@ -43,7 +43,6 @@ const PostDetails = () => {
                 <div className="post" id={post.id} >
                     <div className="post-head">
                         <div className="user-data">
-                            <button className='back-button button' onClick={() => nav(-1)}>Back</button>
                             <h3 className="post-display-name">{post.user.display_name}</h3>
                             <button className="button post-user-name" onClick={directToProfile}>@{post.user.username}</button>
                         </div>
