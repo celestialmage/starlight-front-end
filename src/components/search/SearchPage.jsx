@@ -14,7 +14,7 @@ const SearchPage = () => {
                 < Home />
                 < SearchForm setResults={setResults} />
             </div>
-            < UserList users={results} />
+            {results && < UserList users={results} />}
         </div>
     )
 }

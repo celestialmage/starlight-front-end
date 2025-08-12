@@ -2,13 +2,20 @@ import User from "./User";
 import './UserList.css';
 
 const UserList = ({ users }) => {
-    const userList = users.map(user => {
-        return < User key={user.id} user={user} />
-    })
+    
+    let userList;
+
+    if (Array.isArray(users)) {
+        userList = users.map(user => {
+            return < User key={user.id} user={user} />
+        });
+    } else {
+        console.error("Expected users to be an array, got:", users);
+    }
 
     return (
         <div className='search-results'>
-            {userList}
+            {users && userList}
         </div>
     );
 }
