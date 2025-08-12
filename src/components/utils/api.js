@@ -3,13 +3,6 @@ import { saveTokens, getAuthHeaders } from './utility';
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
-const createNewUser = (googleToken, userData) => {
-    return axios
-    .post(`${backendUrl}/users`, userData, getAuthHeaders())
-    .then(response => response)
-    .catch(error => error);
-}
-
 export const createPost = (postData) => {
     return axios
         .post(`${backendUrl}/posts`, postData, getAuthHeaders())
@@ -83,17 +76,25 @@ export const unlikePost = ({postId}) => {
         .delete(`${backendUrl}/likes/${postId}`, getAuthHeaders());
 }
 
+const createNewUser = (googleToken, userData) => {
+    return axios
+        .post(`${backendUrl}/users`, userData, getAuthHeaders())
+        .then(response => response)
+        .catch(error => error);
+}
+
 export const loginUser = async ({ credential }) => {
 
     const userToken = credential
     const credentials = {credential: userToken}
 
     const response = await axios.post(`${backendUrl}/api/login`, credentials);
-    saveTokens(response);
 
     if (response.data.user_found === false) {
-        createNewUser(userToken);
-    } 
+        return response.data.user_found;
+    }
+    saveTokens(response);
+
 }
 
 // this function will be used when calling ANY api function that retrieves or posts data

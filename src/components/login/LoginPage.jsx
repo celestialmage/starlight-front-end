@@ -9,7 +9,11 @@ const LoginPage = () => {
     const nav = useNavigate();
 
     const handleLogin = async (response) => {
-        await loginUser(response)
+        const response = await loginUser(response);
+
+        if (response === false) {
+            createNewUser(userToken);
+        }
         nav('/');
     }
 
