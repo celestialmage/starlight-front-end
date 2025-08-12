@@ -53,6 +53,13 @@ export const fetchUserByUserId = () => {
         .catch(error => error);
 }
 
+export const fetchUserBySearch = ({query}) => {
+    return axios
+        .get(`${backendUrl}/users/search/${query}`,  getAuthHeaders())
+        .then(response => response.data.users)
+        .catch(error => error);
+}
+
 export const followUser = ({userId}) => {
     return axios
         .post(`${backendUrl}/follows/${userId}`, {}, getAuthHeaders())
