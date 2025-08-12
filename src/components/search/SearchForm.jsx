@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { fetchWithAuth, fetchUserBySearch } from "../utils/api";
+import './SearchForm.css';
 
 const SearchForm = ({ setResults }) => {
     
@@ -27,8 +28,8 @@ const SearchForm = ({ setResults }) => {
         };
 
         fetchWithAuth(fetchUserBySearch, options)
-            .then(console.log)
-            // .then(setResults);
+            // .then(console.log)
+            .then(setResults);
         setFormData(defaultFormData);
     };
 

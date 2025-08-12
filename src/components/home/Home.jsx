@@ -11,7 +11,6 @@ const Home = ({ addNewPost }) => {
             < HomeButton />
             < SearchButton />
             < ProfileButton />
-            < SearchButton />
             < LogoutButton />
             {window.location.pathname === '/' && < PostForm addNewPost={addNewPost} />}
         </div>

@@ -1,0 +1,95 @@
+.user {
+  padding: 1rem;
+  border-bottom: 1px solid #2f3336;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #000000;
+}
+
+.user:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.user:last-child {
+  border-bottom: none;
+}
+
+.user-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.user-display-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.user-user-name {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #71767b;
+  margin: 0;
+}
+
+.user-user-name::before {
+  content: "@";
+}
+
+.user-info {
+  margin-bottom: 0.75rem;
+}
+
+.user-bio {
+  font-size: 0.9rem;
+  color: #ffffff;
+  line-height: 1.4;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.user-statistics {
+  display: flex;
+  gap: 1rem;
+}
+
+.user-following-count,
+.user-follower-count {
+  font-size: 0.85rem;
+  color: #71767b;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.user:hover .user-following-count,
+.user:hover .user-follower-count {
+  color: #ffffff;
+}
+
+/* Empty state */
+.user-bio:empty::before {
+  content: "No bio available";
+  color: #71767b;
+  font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .user {
+    padding: 0.75rem;
+  }
+
+  .user-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .user-statistics {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
