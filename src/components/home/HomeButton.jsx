@@ -8,7 +8,7 @@ const HomeButton = () => {
     };
 
     return (
-        <button onClick={goToHome}>Home</button>
+        <button className='button' onClick={goToHome}>Home</button>
     )
 }
 

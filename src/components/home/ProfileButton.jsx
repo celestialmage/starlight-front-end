@@ -17,7 +17,7 @@ const ProfileButton = () => {
     })
 
     return (
-        <button onClick={goToProfile}>
+        <button className='button' onClick={goToProfile}>
             Profile
         </button>
     );

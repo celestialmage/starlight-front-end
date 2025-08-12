@@ -63,3 +63,16 @@
   color: #ffffff;
   font-weight: 700;
 }
+
+button {
+  background: transparent;
+  border: 1px solid #2f3336;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+}
