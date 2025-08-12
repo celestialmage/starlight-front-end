@@ -1,0 +1,45 @@
+.search-results {
+  background-color: #000000;
+  min-height: 200px;
+}
+
+.search-results:empty::before {
+  content: "No users found. Try a different search term.";
+  display: block;
+  padding: 2rem;
+  text-align: center;
+  color: #71767b;
+  font-style: italic;
+}
+
+/* Loading state */
+.search-results.loading::before {
+  content: "Searching...";
+  display: block;
+  padding: 2rem;
+  text-align: center;
+  color: #71767b;
+}
+
+/* Animation for new results */
+.search-results .user {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .search-results {
+    padding: 0;
+  }
+}
