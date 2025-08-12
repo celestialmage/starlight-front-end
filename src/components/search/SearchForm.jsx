@@ -16,8 +16,6 @@ const SearchForm = ({ setResults }) => {
             ...FormData,
             [target.name]: target.value
         });
-
-        console.log(formData)
     };
     
     const handleSubmit = (event) => {
@@ -29,8 +27,7 @@ const SearchForm = ({ setResults }) => {
 
         fetchWithAuth(fetchUserBySearch, options)
             // .then(console.log)
-            .then(setResults);
-        setFormData(defaultFormData);
+            .then(setResults)
     };
 
     return (
@@ -38,7 +35,7 @@ const SearchForm = ({ setResults }) => {
             <input
                 name='query'
                 type='text'
-                value={formData.text}
+                value={formData.query}
                 onChange={handleChange}
                 maxLength={maxSearchLength}
                 placeholder="search"

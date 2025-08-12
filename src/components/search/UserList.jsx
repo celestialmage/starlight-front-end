@@ -6,8 +6,6 @@ const UserList = ({ users }) => {
         return < User key={user.id} user={user} />
     })
 
-    console.log(users)
-
     return (
         <div className='search-results'>
             {userList}
