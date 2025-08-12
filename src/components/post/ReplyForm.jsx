@@ -40,6 +40,7 @@ const ReplyForm = ({ postId, addNewReply }) => {
                     maxLength={maxPostLength}
                     placeholder="something to say?"
                     required
+                    autoComplete='off'
                  />
                  <button type='submit'>Post</button>
             </form>
