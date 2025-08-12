@@ -6,6 +6,7 @@ import PostDetails from './components/post/PostDetails';
 import Profile from './components/profile/Profile';
 import './App.css';
 import SearchPage from './components/search/SearchPage';
+import SignupUser from './components/signup/SignupUser';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/login' element={<LoginPage />} />
+        <Route path='/signup/:userToken' element={< SignupUser />} />
         <Route path='/:username/:postId' element={< PostDetails /> } />
         <Route path='/' element={<Landing />} />
         <Route path='/:username' element={< Profile />} />

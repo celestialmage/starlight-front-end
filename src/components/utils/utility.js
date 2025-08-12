@@ -1,7 +1,7 @@
-export const getAuthHeaders = () => {
+export const getAuthHeaders = (token = localStorage.getItem('StarlightAccessToken')) => {
     return {
         "headers": {
-            Authorization: `Bearer ${localStorage.getItem('StarlightAccessToken')}`,
+            Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json'
         }
     };
@@ -10,6 +10,8 @@ export const getAuthHeaders = () => {
 export function saveTokens ({ data }) {
     localStorage.setItem('StarlightAccessToken', data.access_token);
     localStorage.setItem('StarlightRefreshToken', data.refresh_token);
+
+    console.log('Tokens Saved');
 };
 
 export const timeAgo = (dateString) => {
