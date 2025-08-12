@@ -18,7 +18,7 @@ const Landing = () => {
 
     const addNewPost = (post) => {
 
-        setPosts([...posts, post]);
+        setPosts([post, ...posts]);
         getTimeline();
     }
 
