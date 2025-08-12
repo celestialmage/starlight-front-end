@@ -12,6 +12,12 @@
   margin-bottom: 16px;
 }
 
+.profile-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 .user-details {
   flex: 1;
 }

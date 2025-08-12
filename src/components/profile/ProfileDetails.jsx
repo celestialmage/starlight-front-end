@@ -17,7 +17,7 @@ const ProfileDetails = ({ user }) => {
 
     return user && (
         <div className='profile-details'>
-            <div>
+            <div className="profile-head">
                 <div className='user-details'>
                     <h3 className="user-display-name">{user.display_name}</h3>
                     <h4 className="user-username">@{user.username}</h4>
