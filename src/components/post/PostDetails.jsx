@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchWithAuth, fetchPostDetails } from '../utils/api';
 import { timeAgo } from "../utils/utility"
-import Home from '../timeline/Home';
+import Home from '../home/Home';
 import ReplyList from './ReplyList';
 import ReplyForm from '../post/ReplyForm';
 import LikeButton from '../timeline/LikeButton';
@@ -45,7 +45,7 @@ const PostDetails = () => {
                         <div className="user-data">
                             <button className='back-button button' onClick={() => nav(-1)}>Back</button>
                             <h3 className="post-display-name">{post.user.display_name}</h3>
-                            <h4 className="post-user-name" onClick={directToProfile}>@{post.user.username}</h4>
+                            <button className="button post-user-name" onClick={directToProfile}>@{post.user.username}</button>
                         </div>
                         <div className="time-data">
                             <p className="post-timestamp">{timeAgo(post.time_posted)}</p>

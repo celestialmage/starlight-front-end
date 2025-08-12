@@ -1,4 +1,4 @@
-import PostForm from "./PostForm";
+import PostForm from "../timeline/PostForm";
 import LogoutButton from "./LogoutButton";
 import ProfileButton from "./ProfileButton";
 import HomeButton from "./HomeButton";

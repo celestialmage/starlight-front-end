@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { fetchWithAuth, fetchUserByUsername } from '../utils/api';
 import ProfileDetails from './ProfileDetails';
 import PostsSelector from './PostsSelector';
-import Home from '../timeline/Home';
+import Home from '../home/Home';
 
 const Profile = () => {
 

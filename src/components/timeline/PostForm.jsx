@@ -36,6 +36,11 @@ const PostForm = ({ addNewPost }) => {
                     type='text'
                     value={formData.text}
                     onChange={handleChange}
+                    onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                        }
+                    }}
                     maxLength={maxPostLength}
                     placeholder="what's happening?"
                     required

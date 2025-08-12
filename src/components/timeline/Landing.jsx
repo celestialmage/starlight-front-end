@@ -1,12 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router";
-import LogoutButton from "./LogoutButton";
 import PostList from "./PostList";
-import PostForm from "./PostForm";
 import './Landing.css';
-import PostDetails from '../post/PostDetails';
-import Home from './Home';
-import Post from './Post';
+import Home from '../home/Home';
 import { fetchWithAuth, fetchTimeline } from '../utils/api';
 
 const Landing = () => {
