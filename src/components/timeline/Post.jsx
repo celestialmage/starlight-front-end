@@ -28,7 +28,7 @@ const Post = ({ post, index }) => {
             </div>
             <p className="post-text">{post.text}</p>
             <div className="button-container">
-                <p className="reply-button">{post.reply_count} Replies</p>
+                <button className="reply-button">{post.reply_count} Replies</button>
                 < LikeButton post={post} />
             </div>
         </div>

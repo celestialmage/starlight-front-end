@@ -15,7 +15,7 @@ function App() {
         <Route path='/:username/:postId' element={< PostDetails /> } />
         <Route path='/' element={<Landing />} />
         <Route path='/:username' element={< Profile />} />
-
+        <Route path='/search' element={<p>meow</p>} />
       </Routes>
     </Router>
   )
