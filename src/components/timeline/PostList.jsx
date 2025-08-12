@@ -3,7 +3,7 @@ import './PostList.css';
 
 const PostList = ({ posts }) => {
 
-    const timeline = posts.reverse().map((post,index) => (
+    const timeline = posts.map((post,index) => (
         < Post post={post} index={index} key={index} />
     ));
 
