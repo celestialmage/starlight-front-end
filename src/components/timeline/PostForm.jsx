@@ -44,6 +44,7 @@ const PostForm = ({ addNewPost }) => {
                     maxLength={maxPostLength}
                     placeholder="what's happening?"
                     required
+                    autoComplete='off'
                  />
                  <button type='submit'>Post</button>
             </form>
