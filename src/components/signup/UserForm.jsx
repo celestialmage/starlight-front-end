@@ -104,7 +104,14 @@ const UserForm = ({ token='', userData, submitFunction }) => {
                 autoComplete='off'
             />
 
-            {formData['username'].toLowerCase() !== originalUsername.toLowerCase() && <input type='button' disabled={!formData.username.length} onClick={checkUsername} value="username available?"/>}
+            {formData['username'].toLowerCase() !== originalUsername.toLowerCase() && 
+                <input 
+                    name='username-check'
+                    type='button' 
+                    id='username-check'
+                    disabled={!formData.username.length} 
+                    onClick={checkUsername} 
+                    value="username available?"/>}
 
             {showMessage && invalidMessage}
             
