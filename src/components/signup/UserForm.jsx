@@ -5,9 +5,6 @@ import { checkUsernameAvailability } from "../utils/api";
 import './UserForm.css';
 
 const UserForm = ({ token='', userData, submitFunction }) => {
-
-    console.log(userData);
-
     const nav = useNavigate();
     const originalUsername = userData.username;
 
