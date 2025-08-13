@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { checkUsernameAvailability, createNewUser } from "../utils/api";
-import './UserForm.css'
+import './UserForm.css';
 
 const UserForm = ({ token='', userData, submitFunction }) => {
 

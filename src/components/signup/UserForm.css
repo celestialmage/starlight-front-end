@@ -14,7 +14,7 @@
   margin-bottom: 1em;
 }
 
-.user-form input[type="text"] {
+.user-form input {
   padding: 16px 20px;
   background: #111111;
   border: 2px solid #333333;
@@ -107,11 +107,6 @@
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
-}
-
-/* Character count styling for inputs */
-.user-form input[type="text"]:focus + .character-count {
-  opacity: 1;
 }
 
 .character-count {

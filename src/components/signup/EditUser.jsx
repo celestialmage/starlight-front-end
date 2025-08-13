@@ -37,7 +37,7 @@ const EditUser = () => {
     return (
         <div className="container-edit-page">
             <div className="edit">
-                <h2>enter your account information</h2>
+                <h2>{!editPage ? 'enter your account information' : 'edit profile'}</h2>
                 {!editPage && < UserForm token={params['userToken']} userData={userData} submitFunction={createNewUser} />}
                 {editPage && < UserForm userData={userData} submitFunction={editUser} />}
             </div>
