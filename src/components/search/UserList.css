@@ -1,6 +1,7 @@
 .search-results {
   background-color: #000000;
   min-height: 200px;
+  width: 100%;
 }
 
 .search-results:empty::before {

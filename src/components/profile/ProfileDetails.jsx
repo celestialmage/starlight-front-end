@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import FollowButton from "./FollowButton";
 import './ProfileDetails.css';
 
 const ProfileDetails = ({ user }) => {
+
+    const nav = useNavigate();
 
     const accessToken = localStorage.getItem('StarlightAccessToken');
     const { sub } = jwtDecode(accessToken);
@@ -10,7 +13,7 @@ const ProfileDetails = ({ user }) => {
     let button;
 
     if (sub === user.id) {
-        button = <p> meow </p>;
+        button = <button onClick={() => nav(`/${user.username}/edit`)}>Edit Profile</button>;
     } else {
         button = < FollowButton user={user} />
     }

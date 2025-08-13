@@ -26,6 +26,7 @@ body {
   border-right: 1px solid #2f3336;
   background-color: #000000;
   overscroll-behavior-y: contain;
+  justify-content: flex-start;
 }
 
 /* Header area styling */

@@ -10,9 +10,7 @@ export const checkUsernameAvailability = (username) => {
         .catch(error => error);
 };
 
-export const createNewUser = (googleToken, userData) => {
-    console.log(userData);
-    console.log(getAuthHeaders(googleToken))
+export const createNewUser = (userData) => {
     return axios
         .post(`${backendUrl}/users`, userData, getAuthHeaders())
         .then(response => response)
@@ -30,6 +28,15 @@ export const createReply = (replyData) => {
     return axios
         .post(`${backendUrl}/replies/post/${replyData.post_id}`, replyData, getAuthHeaders())
         .then(response => response['data']['reply'])
+        .catch(error => error);
+}
+
+export const editUser = (userData) => {
+
+    console.log(userData);
+    return axios
+        .patch(`${backendUrl}/users`, userData, getAuthHeaders())
+        .then(response => response.data.user)
         .catch(error => error);
 }
 
@@ -51,6 +58,13 @@ export const fetchPostDetails = (options) => {
 export const fetchUserByUsername = ({username}) => {
     return axios
         .get(`${backendUrl}/users/${username}`, getAuthHeaders())
+        .then(response => response.data.user)
+        .catch(error => error);
+}
+
+export const fetchUserProfile = ({username}) => {
+    return axios
+        .get(`${backendUrl}/users/${username}/profile`, getAuthHeaders())
         .then(response => response.data.user)
         .catch(error => error);
 }

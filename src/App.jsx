@@ -6,7 +6,7 @@ import PostDetails from './components/post/PostDetails';
 import Profile from './components/profile/Profile';
 import './App.css';
 import SearchPage from './components/search/SearchPage';
-import SignupUser from './components/signup/SignupUser';
+import EditUser from './components/signup/EditUser';
 
 function App() {
 
@@ -14,11 +14,12 @@ function App() {
     <Router>
       <Routes>
         <Route path='/login' element={<LoginPage />} />
-        <Route path='/signup/:userToken' element={< SignupUser />} />
-        <Route path='/:username/:postId' element={< PostDetails /> } />
-        <Route path='/' element={<Landing />} />
-        <Route path='/:username' element={< Profile />} />
         <Route path='/search' element={< SearchPage />} />
+        <Route path='/signup/:userToken' element={< EditUser />} />
+        <Route path='/:username/edit' element={< EditUser />} />
+        <Route path='/:username/:postId' element={< PostDetails /> } />
+        <Route path='/:username' element={< Profile />} />
+        <Route path='/' element={<Landing />} />
       </Routes>
     </Router>
   )

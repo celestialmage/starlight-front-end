@@ -1,5 +1,6 @@
 .timeline {
   min-height: calc(100vh - 200px);
+  width: 100%;
 }
 
 /* Remove any default list styling */

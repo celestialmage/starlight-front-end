@@ -94,3 +94,7 @@
   opacity: 1 !important;
   visibility: visible !important;
 }
+
+.expanded-post {
+  width: 100%;
+}

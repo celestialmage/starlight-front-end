@@ -4,19 +4,14 @@ import { jwtDecode } from "jwt-decode";
 import { checkUsernameAvailability, createNewUser } from "../utils/api";
 import './UserForm.css'
 
-const UserForm = ({ token }) => {
+const UserForm = ({ token='', userData, submitFunction }) => {
 
     const nav = useNavigate();
+    const originalUsername = userData.username;
 
-    const defaultForm = {
-        displayName: '',
-        username: '',
-        bio: ''
-    };
-
-    const [ formData, setFormData ] = useState(defaultForm);
+    const [ formData, setFormData ] = useState(userData);
     const [ uniqueUsername, setUniqueUsername ] = useState(false);
-    const [ approvedUsername, setApprovedUsername ] = useState('');
+    const [ approvedUsername, setApprovedUsername ] = useState(originalUsername);
     const [ showMessage, setShowMessage ] = useState(false);
 
     const maxDisplayNameLength = 20;
@@ -46,6 +41,9 @@ const UserForm = ({ token }) => {
 
     const handleChange = ({ target }) => {
 
+        console.log(formData)
+        console.log(originalUsername)
+
         setFormData({
             ...formData,
             [target.name]: target.value
@@ -56,23 +54,28 @@ const UserForm = ({ token }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (usernameRequirements.test(formData.username) && formData.username === approvedUsername) {
+        if (usernameRequirements.test(formData.username) &&
+            (formData.username === approvedUsername || 
+             formData.username.toLowerCase() === originalUsername.toLowerCase())) {
             const finalUserData = {};
-            const googleData = jwtDecode(token);
 
             finalUserData['display_name'] = formData.displayName;
             finalUserData['username'] = formData.username;
             finalUserData['bio'] = formData.bio;
-            finalUserData['id'] = googleData.sub;
-            finalUserData['email'] = googleData.email;
-            createNewUser(token, finalUserData)
-                .then(response => response.status === 201 ? nav(`/${finalUserData.username}`)  : console.log('failed'));
+            
+            if (token) {
+                const googleData = jwtDecode(token);
+                finalUserData['id'] = googleData.sub;
+                finalUserData['email'] = googleData.email;
+            }
+
+            submitFunction(finalUserData)
+                .then(() => nav(`/${finalUserData.username}`));
         } else {
             console.log('failed');
-        }
-
-        
-        // fetchWithAuth(createNewUser, formData);
+            console.log(formData.username.toLowerCase())
+            console.log(originalUsername.toLowerCase())
+        }        
     }
 
 
@@ -118,8 +121,11 @@ const UserForm = ({ token }) => {
                 required
                 autoComplete='off'
             />
-            <input type='button' disabled={!formData.username.length} onClick={checkUsername} value="username available?"/>
-            <input type='submit' disabled={!uniqueUsername || formData.username !== approvedUsername} />
+            {formData['username'].toLowerCase() !== originalUsername.toLowerCase() && <input type='button' disabled={!formData.username.length} onClick={checkUsername} value="username available?"/>
+}
+            <input type='submit' disabled={(!uniqueUsername || 
+                                           formData.username !== approvedUsername) && 
+                                           formData.username.toLowerCase() !== originalUsername.toLowerCase()} />
         </form>
     )
 
