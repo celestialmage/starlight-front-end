@@ -33,7 +33,6 @@ export const createReply = (replyData) => {
 
 export const editUser = (userData) => {
 
-    console.log(userData);
     return axios
         .patch(`${backendUrl}/users`, userData, getAuthHeaders())
         .then(response => response.data.user)

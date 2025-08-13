@@ -26,7 +26,6 @@ const Profile = () => {
 
             setUserData(response);
         })
-        // .then(console.log);
     }, [])
 
     return Object.keys(userData).length !== 0 && (

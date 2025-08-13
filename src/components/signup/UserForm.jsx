@@ -27,11 +27,8 @@ const UserForm = ({ token='', userData, submitFunction }) => {
     const checkUsername = () => {
         const username = formData.username;
 
-        console.log(username);
-
         checkUsernameAvailability(username)
             .then((response) => {
-                console.log(response);
                 setUniqueUsername(response);
                 if (response === true) {
                     setApprovedUsername(username);
@@ -42,10 +39,7 @@ const UserForm = ({ token='', userData, submitFunction }) => {
     };
 
     const handleChange = ({ target }) => {
-
-        console.log(formData)
-        console.log(originalUsername)
-
+        
         setFormData({
             ...formData,
             [target.name]: target.value
