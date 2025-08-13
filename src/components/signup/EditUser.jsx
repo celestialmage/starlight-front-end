@@ -3,10 +3,12 @@ import { useParams } from "react-router-dom";
 import { createNewUser, editUser,fetchUserProfile, fetchWithAuth } from "../utils/api";
 import UserForm from "./UserForm";
 import './EditUser.css'
+import { jwtDecode } from "jwt-decode";
 
 const EditUser = () => {
 
     const defaultForm = {
+        id: '',
         displayName: '',
         username: '',
         bio: ''
@@ -23,6 +25,7 @@ const EditUser = () => {
             fetchWithAuth(fetchUserProfile, { username })
             .then((response) => {
                 const userForm = {
+                    id: response.id,
                     displayName: response.display_name,
                     username: response.username,
                     bio: response.bio

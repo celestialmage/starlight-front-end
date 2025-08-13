@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { checkUsernameAvailability } from "../utils/api";
 import './UserForm.css';
 
 const UserForm = ({ token='', userData, submitFunction }) => {
+
+    console.log(userData);
 
     const nav = useNavigate();
     const originalUsername = userData.username;
@@ -77,6 +79,17 @@ const UserForm = ({ token='', userData, submitFunction }) => {
             console.log(originalUsername.toLowerCase())
         }        
     }
+
+    useEffect(() => {
+
+        console.log(formData);
+
+        const user = jwtDecode(localStorage.getItem('StarlightAccessToken'));
+
+        if (formData.id && user.sub !== formData.id) {
+            nav(-1)
+        }
+    })
 
 
     return (
