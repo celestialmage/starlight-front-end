@@ -1,0 +1,120 @@
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #000000;
+  border-radius: 16px;
+  border: 1px solid #333333;
+}
+
+.user-form input[type="text"] {
+  padding: 16px 20px;
+  background: #111111;
+  border: 2px solid #333333;
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.user-form input[type="text"]:focus {
+  border-color: #1d9bf0;
+  background: #0a0a0a;
+  box-shadow: 0 0 0 1px #1d9bf0;
+}
+
+.user-form input[type="text"]::placeholder {
+  color: #71767b;
+  font-weight: 400;
+}
+
+.user-name-requirements {
+  color: #71767b;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: -10px 0 0 0;
+  padding: 0 4px;
+}
+
+.taken-username-message {
+  color: #f4212e;
+  font-size: 14px;
+  font-weight: 500;
+  margin: -10px 0 0 0;
+  padding: 8px 12px;
+  background: rgba(244, 33, 46, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(244, 33, 46, 0.3);
+}
+
+.user-form input[type="button"] {
+  padding: 12px 24px;
+  background: #1d9bf0;
+  color: #ffffff;
+  border: none;
+  border-radius: 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.user-form input[type="button"]:hover:not(:disabled) {
+  background: #1a8cd8;
+  transform: translateY(-1px);
+}
+
+.user-form input[type="button"]:disabled {
+  background: #333333;
+  color: #71767b;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.user-form input[type="submit"] {
+  padding: 16px 24px;
+  background: #00ba7c;
+  color: #ffffff;
+  border: none;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin-top: 10px;
+}
+
+.user-form input[type="submit"]:hover:not(:disabled) {
+  background: #00a86b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 186, 124, 0.3);
+}
+
+.user-form input[type="submit"]:disabled {
+  background: #333333;
+  color: #71767b;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Character count styling for inputs */
+.user-form input[type="text"]:focus + .character-count {
+  opacity: 1;
+}
+
+.character-count {
+  font-size: 12px;
+  color: #71767b;
+  text-align: right;
+  margin-top: -15px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}

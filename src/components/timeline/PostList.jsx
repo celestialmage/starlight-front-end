@@ -8,7 +8,7 @@ const PostList = ({ posts }) => {
     ));
 
     return (
-        <div className={'timeline'} >
+        <div className='timeline' >
             {timeline}
         </div>
     )

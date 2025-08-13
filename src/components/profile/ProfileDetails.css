@@ -3,6 +3,7 @@
   border-bottom: 1px solid #333333;
   background: #000000;
   color: #ffffff;
+  width: 100%;
 }
 
 .profile-details > div:first-child {

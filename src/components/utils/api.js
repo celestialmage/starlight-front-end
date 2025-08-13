@@ -3,11 +3,18 @@ import { saveTokens, getAuthHeaders } from './utility';
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
-const createNewUser = (googleToken, userData) => {
+export const checkUsernameAvailability = (username) => {
     return axios
-    .post(`${backendUrl}/users`, userData, getAuthHeaders())
-    .then(response => response)
-    .catch(error => error);
+        .get(`${backendUrl}/users/${username}/check`)
+        .then(response => response.data.available)
+        .catch(error => error);
+};
+
+export const createNewUser = (userData) => {
+    return axios
+        .post(`${backendUrl}/users`, userData, getAuthHeaders())
+        .then(response => response)
+        .catch(error => error);
 }
 
 export const createPost = (postData) => {
@@ -21,6 +28,15 @@ export const createReply = (replyData) => {
     return axios
         .post(`${backendUrl}/replies/post/${replyData.post_id}`, replyData, getAuthHeaders())
         .then(response => response['data']['reply'])
+        .catch(error => error);
+}
+
+export const editUser = (userData) => {
+
+    console.log(userData);
+    return axios
+        .patch(`${backendUrl}/users`, userData, getAuthHeaders())
+        .then(response => response.data.user)
         .catch(error => error);
 }
 
@@ -42,6 +58,13 @@ export const fetchPostDetails = (options) => {
 export const fetchUserByUsername = ({username}) => {
     return axios
         .get(`${backendUrl}/users/${username}`, getAuthHeaders())
+        .then(response => response.data.user)
+        .catch(error => error);
+}
+
+export const fetchUserProfile = ({username}) => {
+    return axios
+        .get(`${backendUrl}/users/${username}/profile`, getAuthHeaders())
         .then(response => response.data.user)
         .catch(error => error);
 }
@@ -89,11 +112,14 @@ export const loginUser = async ({ credential }) => {
     const credentials = {credential: userToken}
 
     const response = await axios.post(`${backendUrl}/api/login`, credentials);
+
     saveTokens(response);
 
     if (response.data.user_found === false) {
-        createNewUser(userToken);
-    } 
+        return "New User";
+    }
+    
+
 }
 
 // this function will be used when calling ANY api function that retrieves or posts data

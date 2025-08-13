@@ -4,23 +4,35 @@ import { useNavigate } from "react-router";
 import { loginUser } from '../utils/api'
 import './LoginPage.css';
 
-const LoginPage = () => {
+const LoginPage = () => {    
 
     const nav = useNavigate();
 
     const handleLogin = async (response) => {
-        await loginUser(response)
-        nav('/');
+
+        const loginResponse = await loginUser(response);
+
+        if (loginResponse === "New User") {
+
+            console.log("I think we should go.")
+            nav(`/signup/${response.credential}`);
+        } else {
+            nav('/');
+        }
     }
 
     useEffect(() => {
+
+        localStorage.removeItem('StarlightAccessToken');
+        localStorage.removeItem('StarlightRefreshToken'); 
+
         if (localStorage.getItem('StarlightRefreshToken') !== null) {
             nav("/");
         }
     });
 
     return (
-        <div>
+        <div className="container">
             <h1>Login/Signup with Google!</h1>
             <GoogleLogin 
                 onSuccess={handleLogin}
