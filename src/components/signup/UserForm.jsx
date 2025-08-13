@@ -104,6 +104,8 @@ const UserForm = ({ token='', userData, submitFunction }) => {
                 autoComplete='off'
             />
 
+            {formData['username'].toLowerCase() !== originalUsername.toLowerCase() && <input type='button' disabled={!formData.username.length} onClick={checkUsername} value="username available?"/>}
+
             {showMessage && invalidMessage}
             
             <p className="user-name-requirements">
@@ -121,8 +123,6 @@ const UserForm = ({ token='', userData, submitFunction }) => {
                 required
                 autoComplete='off'
             />
-            {formData['username'].toLowerCase() !== originalUsername.toLowerCase() && <input type='button' disabled={!formData.username.length} onClick={checkUsername} value="username available?"/>
-}
             <input type='submit' disabled={(!uniqueUsername || 
                                            formData.username !== approvedUsername) && 
                                            formData.username.toLowerCase() !== originalUsername.toLowerCase()} />
