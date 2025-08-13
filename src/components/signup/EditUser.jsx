@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { createNewUser, editUser,fetchUserProfile, fetchWithAuth } from "../utils/api";
 import UserForm from "./UserForm";
 import './EditUser.css'
 import { jwtDecode } from "jwt-decode";
 
 const EditUser = () => {
+
+    const nav = useNavigate();
+    const forbiddenUsernames = new Set(['search']);
 
     const defaultForm = {
         id: '',
@@ -22,6 +25,11 @@ const EditUser = () => {
         if (params['username']) {
 
             const username = params['username'];
+
+            if (forbiddenUsernames.has(username.toLowerCase())) {
+                nav(-1);
+            }
+
             fetchWithAuth(fetchUserProfile, { username })
             .then((response) => {
                 const userForm = {
@@ -33,6 +41,11 @@ const EditUser = () => {
 
                 setUserData(userForm);
                 setEditPage(true);
+            })
+            .catch((error) => {
+                if (error.status === 404) {
+                    nav(-1)
+                }
             });
         }
     }, [])
