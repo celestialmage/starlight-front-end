@@ -10,8 +10,6 @@ export const getAuthHeaders = (token = localStorage.getItem('StarlightAccessToke
 export function saveTokens ({ data }) {
     localStorage.setItem('StarlightAccessToken', data.access_token);
     localStorage.setItem('StarlightRefreshToken', data.refresh_token);
-
-    console.log('Tokens Saved');
 };
 
 export const timeAgo = (dateString) => {
