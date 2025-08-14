@@ -29,6 +29,7 @@ const UserForm = ({ token='', userData, submitFunction }) => {
                 setUniqueUsername(response);
                 if (response === true) {
                     setApprovedUsername(username);
+                    setShowMessage(false)
                 } else {
                     setShowMessage(true)
                 }
@@ -55,6 +56,7 @@ const UserForm = ({ token='', userData, submitFunction }) => {
             finalUserData['display_name'] = formData.displayName;
             finalUserData['username'] = formData.username;
             finalUserData['bio'] = formData.bio;
+            finalUserData['id'] = formData.id;
             
             if (token) {
                 const googleData = jwtDecode(token);
@@ -72,9 +74,6 @@ const UserForm = ({ token='', userData, submitFunction }) => {
     }
 
     useEffect(() => {
-
-        console.log(formData);
-
         const user = jwtDecode(localStorage.getItem('StarlightAccessToken'));
 
         if (formData.id && user.sub !== formData.id) {
