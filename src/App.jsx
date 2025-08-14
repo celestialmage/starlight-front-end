@@ -6,7 +6,7 @@ import PostDetails from './components/post/PostDetails';
 import Profile from './components/profile/Profile';
 import './App.css';
 import SearchPage from './components/search/SearchPage';
-import EditUser from './components/signup/EditUser';
+import EditUser from './components/editprofile/EditUser';
 
 function App() {
 

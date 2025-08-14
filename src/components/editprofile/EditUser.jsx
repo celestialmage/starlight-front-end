@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { createNewUser, editUser,fetchUserProfile, fetchWithAuth } from "../utils/api";
 import UserForm from "./UserForm";
-import './EditUser.css'
-import { jwtDecode } from "jwt-decode";
+import './EditUser.css';
 
 const EditUser = () => {
 

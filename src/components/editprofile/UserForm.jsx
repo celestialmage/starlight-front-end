@@ -66,11 +66,7 @@ const UserForm = ({ token='', userData, submitFunction }) => {
 
             submitFunction(finalUserData)
                 .then(() => nav(`/${finalUserData.username}`));
-        } else {
-            console.log('failed');
-            console.log(formData.username.toLowerCase())
-            console.log(originalUsername.toLowerCase())
-        }        
+        }
     }
 
     useEffect(() => {
